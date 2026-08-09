@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumena Auto Bot - PlaySyncTools</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #3b82f6;
+            --accent-hover: #2563eb;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px 20px;
+        }
+
+        .logo-container {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .ad-banner {
+            max-width: 728px;
+            width: 90%;
+            height: 90px;
+            background-color: rgba(30, 41, 59, 0.5);
+            border: 2px dashed var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            margin: 20px auto;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .content-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            box-sizing: border-box;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .content-card h2 {
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+
+        .content-card p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background-color 0.2s;
+            margin-bottom: 25px;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .instructions {
+            text-align: left;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+            margin-top: 10px;
+        }
+
+        .instructions h3 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+
+        .instructions ol {
+            color: var(--text-muted);
+            padding-left: 20px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .instructions li strong {
+            color: var(--text-main);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            width: 100%;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">🤖 PlaySyncTools</div>
+        <p>Centro de Descarga e Instrucciones</p>
+    </header>
+
+    <div class="ad-banner">
+        Espacio Publicitario / Banner de Anuncios Superior
+    </div>
+
+    <div class="content-card">
+        <h2>Lumena Auto Bot</h2>
+        <p>Automatización inteligente para optimizar tus sesiones de juego. Compatible con Tampermonkey.</p>
+        
+        <!-- Ojo aquí: asegúrate de que lumena-bot.user.js esté en la misma carpeta o ajusta la ruta si está en otro lado -->
+        <a href="../lumena-bot.user.js" class="btn">📥 Descargar Script (.user.js)</a>
+
+        <div class="instructions">
+            <h3>Instrucciones rápidas de instalación:</h3>
+            <ol>
+                <li>Asegúrate de tener instalada la extensión <strong>Tampermonkey</strong> en tu navegador.</li>
+                <li>Haz clic en el botón de descarga superior. Se abrirá el instalador automático.</li>
+                <li>Presiona <strong>Instalar</strong> o <strong>Actualizar</strong>. ¡Listo! El bot funcionará solo.</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="ad-banner">
+        Espacio Publicitario Inferior
+    </div>
+
+    <footer>
+        &copy; 2026 PlaySyncTools. Todos los derechos reservados.
+    </footer>
+
+</body>
+</html>
