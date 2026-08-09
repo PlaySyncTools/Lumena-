@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumena Auto Bot - Descarga Oficial</title>
+    <title>PlaySyncTools - Automatización y Herramientas de Juego</title>
     <style>
         :root {
             --bg-color: #0f172a;
             --card-bg: #1e293b;
-            --accent: #3b82f6;
+            --accent-color: #3b82f6;
             --accent-hover: #2563eb;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
+            --border-color: #334155;
         }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
@@ -23,128 +25,175 @@
             flex-direction: column;
             min-height: 100vh;
         }
+
         header {
             text-align: center;
-            padding: 40px 20px;
+            padding: 40px 20px 20px;
         }
-        header h1 {
-            margin: 0;
+
+        .logo-container {
             font-size: 2.5rem;
-            color: var(--text-main);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
         }
+
         header p {
             color: var(--text-muted);
             font-size: 1.1rem;
-            margin-top: 10px;
+            margin: 0;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-            flex: 1;
-        }
-        /* Espacio para anuncios (Banner superior) */
+
+        /* Banner Publicitario Superior */
         .ad-banner {
-            background-color: #1a2234;
-            border: 2px dashed #334155;
-            text-align: center;
-            padding: 15px;
-            margin-bottom: 30px;
-            border-radius: 8px;
+            max-width: 728px;
+            height: 90px;
+            background-color: rgba(30, 41, 59, 0.5);
+            border: 2px dashed var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: var(--text-muted);
+            margin: 20px auto;
+            border-radius: 8px;
             font-size: 0.9rem;
         }
+
+        /* Catálogo de Juegos / Herramientas */
+        main {
+            flex: 1;
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
         .card {
             background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            margin-bottom: 30px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .btn-download {
-            display: inline-block;
-            background-color: var(--accent);
-            color: white;
-            padding: 15px 35px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background-color 0.2s, transform 0.1s;
-            box-shadow: 0 4px 6px rgba(59, 130, 246, 0.4);
-            margin-top: 20px;
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
-        .btn-download:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
-        }
-        .instructions {
-            text-align: left;
-            margin-top: 20px;
-            border-top: 1px solid #334155;
-            padding-top: 20px;
-        }
-        .instructions h3 {
-            color: var(--accent);
-        }
-        .instructions ol {
-            padding-left: 20px;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-        .instructions li strong {
+
+        .card h3 {
+            margin-top: 0;
+            font-size: 1.3rem;
             color: var(--text-main);
         }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #047857;
+            color: #d1fae5;
+            padding: 4px 8px;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            width: fit-content;
+        }
+
+        .btn {
+            display: block;
+            text-align: center;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+
         footer {
             text-align: center;
             padding: 20px;
-            background-color: #0b1120;
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>🤖 Lumena Auto Bot</h1>
-        <p>Automatización inteligente para optimizar tus sesiones de juego.</p>
+        <div class="logo-container">
+            🤖 PlaySyncTools
+        </div>
+        <p>Plataforma centralizada de automatización y optimización para videojuegos.</p>
     </header>
 
-    <div class="container">
-
-        <!-- BLOQUE DE ANUNCIO 1 (Pega aquí el código de tu red publicitaria) -->
-        <div class="ad-banner">
-            Espacio Publicitario / Banner de Anuncios
-        </div>
-
-        <div class="card">
-            <h2>Descarga la Versión Más Reciente</h2>
-            <p style="color: var(--text-muted);">Compatible con Tampermonkey y actualizado automáticamente.</p>
-            
-            <!-- Cambia 'lumena-bot.user.js' por la ruta real de tu archivo -->
-            <a href="lumena-bot.user.js" class="btn-download">📥 Descargar Script (.user.js)</a>
-
-            <div class="instructions">
-                <h3>Instrucciones rápidas:</h3>
-                <ol>
-                    <li>Asegúrate de tener instalada la extensión <strong>Tampermonkey</strong> en tu navegador.</li>
-                    <li>Haz clic en el botón de descarga superior. Se abrirá el instalador automáticamente.</li>
-                    <li>Presiona <strong>Instalar</strong> o <strong>Actualizar</strong>. ¡Listo! El bot se actualizará solo.</li>
-                </ol>
-            </div>
-        </div>
-
-        <!-- BLOQUE DE ANUNCIO 2 (Opcional para más impresiones) -->
-        <div class="ad-banner">
-            Espacio Publicitario Inferior
-        </div>
-
+    <!-- Espacio Publicitario Superior -->
+    <div class="ad-banner">
+        Espacio Publicitario / Banner de Anuncios
     </div>
 
+    <main>
+        <div class="section-title">Herramientas Disponibles</div>
+        
+        <div class="grid-container">
+            <!-- Tarjeta de Lumena -->
+            <div class="card">
+                <div>
+                    <span class="badge">ACTIVO / ACTUALIZABLE</span>
+                    <h3>Lumena Auto Bot</h3>
+                    <p>Bot automatizado para Lumena con gestión inteligente de equipo, sistema de ataques y reaparición automática en ciudad.</p>
+                </div>
+                <a href="lumena-bot.user.js" class="btn">Instalar / Descargar Bot</a>
+            </div>
+
+            <!-- Ejemplo de futuro juego (Plantilla lista para cuando agregues más) -->
+            <div class="card" style="opacity: 0.7;">
+                <div>
+                    <span class="badge" style="background-color: #475569;">PRÓXIMAMENTE</span>
+                    <h3>Nuevo Juego / Herramienta</h3>
+                    <p>Espacio reservado para el próximo script o utilidad de automatización en desarrollo.</p>
+                </div>
+                <span class="btn" style="background-color: #334155; cursor: not-allowed;">Próximamente</span>
+            </div>
+        </div>
+    </main>
+
     <footer>
-        <p>&copy; 2026 Lumena Auto Bot. Todos los derechos reservados.</p>
+        &copy; 2026 PlaySyncTools. Todos los derechos reservados.
     </footer>
 
 </body>
