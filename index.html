@@ -47,7 +47,6 @@
             margin: 0;
         }
 
-        /* Contenedor centrado para los anuncios */
         .ad-container {
             display: flex;
             justify-content: center;
@@ -55,6 +54,19 @@
             margin: 20px auto;
             width: 100%;
             overflow: hidden;
+        }
+
+        /* Estilo para el aviso de AdBlock */
+        #adblock-notice {
+            display: none;
+            background-color: #7f1d1d;
+            border: 1px solid #991b1b;
+            color: #f87171;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.95rem;
+            margin: 0 0 20px 0;
         }
 
         main {
@@ -148,6 +160,11 @@
 </head>
 <body>
 
+    <!-- Aviso de Bloqueador -->
+    <div id="adblock-notice">
+        ⚠️ Detectamos un bloqueador de anuncios activo. Por favor, desactívalo para apoyar el mantenimiento y gratuidad de PlaySyncTools. ¡Gracias!
+    </div>
+
     <header>
         <div class="logo-container">
             🤖 PlaySyncTools
@@ -156,7 +173,7 @@
     </header>
 
     <!-- ANUNCIO SUPERIOR (728x90) -->
-    <div class="ad-container">
+    <div class="ad-container" id="ad-box">
         <script>
             atOptions = {
                 'key' : '6dd544e81dbf025053db8c2431c7bea2',
@@ -173,7 +190,6 @@
         <div class="section-title">Herramientas Disponibles</div>
         
         <div class="grid-container">
-            <!-- Tarjeta de Lumena -->
             <div class="card">
                 <div>
                     <span class="badge">ACTIVO / ACTUALIZABLE</span>
@@ -183,7 +199,6 @@
                 <a href="lumena/" class="btn">Ver Detalles / Instalar</a>
             </div>
 
-            <!-- Plantilla Próximamente -->
             <div class="card" style="opacity: 0.7;">
                 <div>
                     <span class="badge" style="background-color: #475569;">PRÓXIMAMENTE</span>
@@ -199,5 +214,19 @@
         &copy; 2026 PlaySyncTools. Todos los derechos reservados.
     </footer>
 
+    <!-- Script Detector de AdBlock -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const adScript = document.querySelector('script[src*="highperformanceformat.com"]');
+                const adContainer = document.getElementById('ad-box');
+                
+                // Si el script fue bloqueado o el contenedor está vacío/sin altura, se muestra el aviso
+                if (!adScript || (adContainer && adContainer.offsetHeight === 0)) {
+                    document.getElementById('adblock-notice').style.display = 'block';
+                }
+            }, 1500);
+        });
+    </script>
 </body>
 </html>
