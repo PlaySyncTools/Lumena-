@@ -107,28 +107,29 @@
 
         .page-layout {
             display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            max-width: 1500px;
+            flex-direction: column;
+            align-items: center;
+            max-width: 900px;
             width: 100%;
             margin: 20px auto;
-            gap: 30px;
+            gap: 20px;
             padding: 0 15px;
             box-sizing: border-box;
             flex: 1;
         }
 
-        .sidebar-ad {
-            width: 300px;
-            min-height: 600px;
+        .banner-ad {
+            width: 100%;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            flex-shrink: 0;
+            min-height: 90px;
+            margin: 10px 0;
+            overflow: hidden;
         }
 
         .content-wrapper {
-            flex: 1;
+            width: 100%;
             max-width: 800px;
             box-sizing: border-box;
         }
@@ -201,12 +202,6 @@
             border-top: 1px solid var(--border-color);
             margin-top: 40px;
         }
-
-        @media (max-width: 1200px) {
-            .sidebar-ad {
-                display: none;
-            }
-        }
     </style>
 </head>
 <body>
@@ -226,13 +221,14 @@
 
     <div class="page-layout">
         
-        <div class="sidebar-ad" id="ad-wrapper-left">
+        <!-- ANUNCIO SUPERIOR -->
+        <div class="banner-ad" id="ad-wrapper-top">
             <script>
                 atOptions = {
                     'key' : '72b4ce04b0f9642774f79d77fb8b9139',
                     'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
+                    'height' : 90,
+                    'width' : 728,
                     'params' : {}
                 };
             </script>
@@ -257,13 +253,14 @@
             </div>
         </div>
 
-        <div class="sidebar-ad" id="ad-wrapper-right">
+        <!-- ANUNCIO INFERIOR -->
+        <div class="banner-ad" id="ad-wrapper-bottom">
             <script>
                 atOptions = {
                     'key' : '72b4ce04b0f9642774f79d77fb8b9139',
                     'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
+                    'height' : 90,
+                    'width' : 728,
                     'params' : {}
                 };
             </script>
@@ -277,21 +274,19 @@
     </footer>
 
     <script>
-        // Detector inicial al cargar la página (con 2.5 segundos de margen)
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const wall = document.getElementById('adblock-wall');
-                const leftAd = document.querySelector('#ad-wrapper-left iframe');
-                const rightAd = document.querySelector('#ad-wrapper-right iframe');
+                const topAd = document.querySelector('#ad-wrapper-top iframe');
+                const bottomAd = document.querySelector('#ad-wrapper-bottom iframe');
                 
-                if (!leftAd && !rightAd) {
+                if (!topAd && !bottomAd) {
                     wall.style.display = 'flex';
                     document.body.style.overflow = 'hidden';
                 }
             }, 2500);
         });
 
-        // Función para dar feedback visual inmediato al hacer clic en recargar
         function checkAdblockBeforeReload() {
             const btn = document.getElementById('reload-btn');
             btn.innerText = "Comprobando y recargando...";
