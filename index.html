@@ -47,21 +47,14 @@
             margin: 0;
         }
 
-        /* Espacio para los anuncios de Adsterra */
-        .ad-banner {
-            max-width: 728px;
-            width: 90%;
-            height: 90px;
-            background-color: rgba(30, 41, 59, 0.5);
-            border: 2px dashed var(--border-color);
+        /* Contenedor centrado para los anuncios */
+        .ad-container {
             display: flex;
-            align-items: center;
             justify-content: center;
-            color: var(--text-muted);
+            align-items: center;
             margin: 20px auto;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            text-align: center;
+            width: 100%;
+            overflow: hidden;
         }
 
         main {
@@ -162,16 +155,25 @@
         <p>Plataforma centralizada de automatización y optimización para videojuegos.</p>
     </header>
 
-    <!-- Banner Superior: Aquí pegarás el código de Adsterra más adelante -->
-    <div class="ad-banner">
-        Espacio Publicitario / Banner Superior
+    <!-- ANUNCIO SUPERIOR (728x90) -->
+    <div class="ad-container">
+        <script>
+            atOptions = {
+                'key' : '6dd544e81dbf025053db8c2431c7bea2',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+            };
+        </script>
+        <script src="https://www.highperformanceformat.com/6dd544e81dbf025053db8c2431c7bea2/invoke.js"></script>
     </div>
 
     <main>
         <div class="section-title">Herramientas Disponibles</div>
         
         <div class="grid-container">
-            <!-- Tarjeta de Lumena (Lleva a la carpeta lumena/) -->
+            <!-- Tarjeta de Lumena -->
             <div class="card">
                 <div>
                     <span class="badge">ACTIVO / ACTUALIZABLE</span>
