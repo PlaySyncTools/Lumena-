@@ -26,9 +26,21 @@
             min-height: 100vh;
         }
 
+        #adblock-notice {
+            display: none;
+            background-color: #7f1d1d;
+            border: 1px solid #991b1b;
+            color: #f87171;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
         header {
             text-align: center;
-            padding: 40px 20px 20px;
+            padding: 30px 20px 10px;
         }
 
         .logo-container {
@@ -47,34 +59,34 @@
             margin: 0;
         }
 
-        .ad-container {
+        /* Contenedor general que reparte las columnas y el centro */
+        .page-layout {
             display: flex;
             justify-content: center;
-            align-items: center;
-            margin: 20px auto;
+            align-items: flex-start;
+            max-width: 1500px;
             width: 100%;
-            overflow: hidden;
+            margin: 20px auto;
+            gap: 20px;
+            padding: 0 15px;
+            box-sizing: border-box;
+            flex: 1;
         }
 
-        /* Estilo para el aviso de AdBlock */
-        #adblock-notice {
-            display: none;
-            background-color: #7f1d1d;
-            border: 1px solid #991b1b;
-            color: #f87171;
-            padding: 15px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 0.95rem;
-            margin: 0 0 20px 0;
+        /* Estilos para las columnas laterales de anuncios */
+        .sidebar-ad {
+            width: 160px;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
         }
 
+        /* Contenido principal al centro */
         main {
             flex: 1;
-            max-width: 1100px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 20px;
+            max-width: 900px;
             box-sizing: border-box;
         }
 
@@ -87,7 +99,7 @@
 
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
         }
 
@@ -156,6 +168,13 @@
             border-top: 1px solid var(--border-color);
             margin-top: 40px;
         }
+
+        /* En celulares o pantallas pequeñas, ocultamos los laterales para que no estorben */
+        @media (max-width: 1150px) {
+            .sidebar-ad {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -172,43 +191,63 @@
         <p>Plataforma centralizada de automatización y optimización para videojuegos.</p>
     </header>
 
-    <!-- ANUNCIO SUPERIOR (728x90) -->
-    <div class="ad-container" id="ad-box">
-        <script>
-            atOptions = {
-                'key' : '6dd544e81dbf025053db8c2431c7bea2',
-                'format' : 'iframe',
-                'height' : 90,
-                'width' : 728,
-                'params' : {}
-            };
-        </script>
-        <script src="https://www.highperformanceformat.com/6dd544e81dbf025053db8c2431c7bea2/invoke.js"></script>
-    </div>
-
-    <main>
-        <div class="section-title">Herramientas Disponibles</div>
+    <!-- DISEÑO DE 3 COLUMNAS (Lateral Izquierdo, Centro, Lateral Derecho) -->
+    <div class="page-layout">
         
-        <div class="grid-container">
-            <div class="card">
-                <div>
-                    <span class="badge">ACTIVO / ACTUALIZABLE</span>
-                    <h3>Lumena Auto Bot</h3>
-                    <p>Bot automatizado para Lumena con gestión inteligente de equipo, sistema de ataques y reaparición automática en ciudad.</p>
-                </div>
-                <a href="lumena/" class="btn">Ver Detalles / Instalar</a>
-            </div>
-
-            <div class="card" style="opacity: 0.7;">
-                <div>
-                    <span class="badge" style="background-color: #475569;">PRÓXIMAMENTE</span>
-                    <h3>Nuevo Juego / Herramienta</h3>
-                    <p>Espacio reservado para el próximo script o utilidad de automatización en desarrollo.</p>
-                </div>
-                <span class="btn" style="background-color: #334155; cursor: not-allowed;">Próximamente</span>
-            </div>
+        <!-- LATERAL IZQUIERDO: Banner Vertical (Usamos temporalmente tu código adaptable o espacio) -->
+        <div class="sidebar-ad" id="left-ad">
+            <script>
+                atOptions = {
+                    'key' : '72b4ce04b0f9642774f79d77fb8b9139',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://www.highperformanceformat.com/72b4ce04b0f9642774f79d77fb8b9139/invoke.js"></script>
         </div>
-    </main>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main>
+            <div class="section-title">Herramientas Disponibles</div>
+            
+            <div class="grid-container">
+                <div class="card">
+                    <div>
+                        <span class="badge">ACTIVO / ACTUALIZABLE</span>
+                        <h3>Lumena Auto Bot</h3>
+                        <p>Bot automatizado para Lumena con gestión inteligente de equipo, sistema de ataques y reaparición automática en ciudad.</p>
+                    </div>
+                    <a href="lumena/" class="btn">Ver Detalles / Instalar</a>
+                </div>
+
+                <div class="card" style="opacity: 0.7;">
+                    <div>
+                        <span class="badge" style="background-color: #475569;">PRÓXIMAMENTE</span>
+                        <h3>Nuevo Juego / Herramienta</h3>
+                        <p>Espacio reservado para el próximo script o utilidad de automatización en desarrollo.</p>
+                    </div>
+                    <span class="btn" style="background-color: #334155; cursor: not-allowed;">Próximamente</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- LATERAL DERECHO: Banner Vertical -->
+        <div class="sidebar-ad" id="right-ad">
+            <script>
+                atOptions = {
+                    'key' : '72b4ce04b0f9642774f79d77fb8b9139',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://www.highperformanceformat.com/72b4ce04b0f9642774f79d77fb8b9139/invoke.js"></script>
+        </div>
+
+    </div>
 
     <footer>
         &copy; 2026 PlaySyncTools. Todos los derechos reservados.
@@ -219,10 +258,7 @@
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const adScript = document.querySelector('script[src*="highperformanceformat.com"]');
-                const adContainer = document.getElementById('ad-box');
-                
-                // Si el script fue bloqueado o el contenedor está vacío/sin altura, se muestra el aviso
-                if (!adScript || (adContainer && adContainer.offsetHeight === 0)) {
+                if (!adScript) {
                     document.getElementById('adblock-notice').style.display = 'block';
                 }
             }, 1500);
