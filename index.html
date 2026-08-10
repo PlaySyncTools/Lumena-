@@ -26,7 +26,6 @@
             min-height: 100vh;
         }
 
-        /* --- MURO ANTI-ADBLOCK DEFINITIVO --- */
         #adblock-wall {
             display: none;
             position: fixed;
@@ -84,7 +83,6 @@
         .wall-btn:hover {
             background-color: var(--accent-hover);
         }
-        /* ------------------------------------- */
 
         header {
             text-align: center;
@@ -220,7 +218,7 @@
     <div id="adblock-wall">
         <div class="wall-card">
             <h2>⚠️ Bloqueador Detectado</h2>
-            <p>Para poder navegar y utilizar las herramientas de <strong>PlaySyncTools</strong>, por favor desactiva tu bloqueador de anuncios en este sitio.</p>
+            <p>Por favor, desactiva tu bloqueador de anuncios (o el escudo de Brave) para apoyar <strong>PlaySyncTools</strong>.</p>
             <button class="wall-btn" onclick="location.reload()">Ya lo desactivé, recargar</button>
         </div>
     </div>
@@ -289,21 +287,19 @@
     </footer>
 
     <script>
-        function checkAdBlocker() {
-            const wall = document.getElementById('adblock-wall');
-            const isScriptBlocked = typeof atOptions === 'undefined';
-            const leftAd = document.querySelector('#ad-wrapper-left iframe');
-            const rightAd = document.querySelector('#ad-wrapper-right iframe');
-            const areIframesMissing = !leftAd || !rightAd || leftAd.offsetHeight < 10 || rightAd.offsetHeight < 10;
-
-            if (isScriptBlocked || areIframesMissing) {
-                wall.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
+        // Verificación equilibrada: Da un margen de 3 segundos para que cargue el script sin bloquear erróneamente
         window.addEventListener('load', () => {
-            setTimeout(checkAdBlocker, 1500);
+            setTimeout(() => {
+                const wall = document.getElementById('adblock-wall');
+                const leftAd = document.querySelector('#ad-wrapper-left iframe');
+                const rightAd = document.querySelector('#ad-wrapper-right iframe');
+                
+                // Si ambos iframes fueron completamente eliminados o bloqueados por la extensión
+                if (!leftAd && !rightAd) {
+                    wall.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                }
+            }, 3000);
         });
     </script>
 </body>
