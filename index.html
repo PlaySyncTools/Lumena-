@@ -218,8 +218,8 @@
     <div id="adblock-wall">
         <div class="wall-card">
             <h2>⚠️ Bloqueador Detectado</h2>
-            <p>Por favor, desactiva tu bloqueador de anuncios (o el escudo de Brave) para apoyar <strong>PlaySyncTools</strong>.</p>
-            <button class="wall-btn" onclick="location.reload()">Ya lo desactivé, recargar</button>
+            <p>Por favor, desactiva tu bloqueador de anuncios para poder acceder a las instrucciones y descarga de scripts en <strong>PlaySyncTools</strong>.</p>
+            <button class="wall-btn" id="reload-btn" onclick="checkAdblockBeforeReload()">Ya lo desactivé, recargar</button>
         </div>
     </div>
 
@@ -287,20 +287,29 @@
     </footer>
 
     <script>
-        // Verificación equilibrada: Da un margen de 3 segundos para que cargue el script sin bloquear erróneamente
+        // Detector inicial al cargar la página (con 2.5 segundos de margen para evitar falsos positivos)
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const wall = document.getElementById('adblock-wall');
                 const leftAd = document.querySelector('#ad-wrapper-left iframe');
                 const rightAd = document.querySelector('#ad-wrapper-right iframe');
                 
-                // Si ambos iframes fueron completamente eliminados o bloqueados por la extensión
                 if (!leftAd && !rightAd) {
                     wall.style.display = 'flex';
                     document.body.style.overflow = 'hidden';
                 }
-            }, 3000);
+            }, 2500);
         });
+
+        // Función para dar feedback visual inmediato al hacer clic en recargar
+        function checkAdblockBeforeReload() {
+            const btn = document.getElementById('reload-btn');
+            btn.innerText = "Comprobando y recargando...";
+            btn.style.opacity = "0.7";
+            setTimeout(() => {
+                location.reload();
+            }, 500);
+        }
     </script>
 </body>
 </html>
