@@ -26,7 +26,7 @@
             min-height: 100vh;
         }
 
-        /* --- EFECTO BLOQUEO AD_BLOCK (MODAL DE COBERTURA) --- */
+        /* --- MURO ANTI-ADBLOCK DEFINITIVO --- */
         #adblock-wall {
             display: none;
             position: fixed;
@@ -34,49 +34,49 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            z-index: 99999;
+            background: rgba(10, 15, 30, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 99999999;
             justify-content: center;
             align-items: center;
+            text-align: center;
             padding: 20px;
             box-sizing: border-box;
         }
 
-        .wall-card-modal {
+        .wall-card {
             background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
+            border: 2px solid var(--accent-color);
+            border-radius: 20px;
             padding: 40px;
-            max-width: 500px;
+            max-width: 480px;
             width: 100%;
-            text-align: center;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
         }
 
-        .wall-card-modal h2 {
+        .wall-card h2 {
             color: #f87171;
             margin-top: 0;
             font-size: 1.8rem;
             margin-bottom: 15px;
         }
 
-        .wall-card-modal p {
+        .wall-card p {
             color: var(--text-muted);
             font-size: 1rem;
             line-height: 1.6;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .wall-btn {
             background-color: var(--accent-color);
             color: white;
             border: none;
-            padding: 12px 25px;
-            font-size: 1rem;
+            padding: 14px 28px;
+            font-size: 1.1rem;
             font-weight: bold;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             transition: background-color 0.2s;
         }
@@ -84,7 +84,7 @@
         .wall-btn:hover {
             background-color: var(--accent-hover);
         }
-        /* ---------------------------------------------------- */
+        /* ------------------------------------- */
 
         header {
             text-align: center;
@@ -92,14 +92,18 @@
         }
 
         .logo-container {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: bold;
-            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
         }
 
         header p {
             color: var(--text-muted);
-            font-size: 1rem;
+            font-size: 1.1rem;
             margin: 0;
         }
 
@@ -110,14 +114,14 @@
             max-width: 1500px;
             width: 100%;
             margin: 20px auto;
-            gap: 20px;
+            gap: 30px;
             padding: 0 15px;
             box-sizing: border-box;
             flex: 1;
         }
 
         .sidebar-ad {
-            width: 160px;
+            width: 300px;
             min-height: 600px;
             display: flex;
             flex-direction: column;
@@ -127,10 +131,8 @@
 
         .content-wrapper {
             flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 700px;
+            max-width: 800px;
+            box-sizing: border-box;
         }
 
         .content-card {
@@ -138,14 +140,12 @@
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 30px;
-            width: 100%;
             box-sizing: border-box;
-            text-align: center;
-            margin-bottom: 20px;
         }
 
         .content-card h2 {
             margin-top: 0;
+            color: var(--text-main);
             font-size: 1.8rem;
         }
 
@@ -175,7 +175,7 @@
             text-align: left;
             border-top: 1px solid var(--border-color);
             padding-top: 20px;
-            margin-top: 10px;
+            margin-top: 20px;
         }
 
         .instructions h3 {
@@ -201,11 +201,10 @@
             color: var(--text-muted);
             font-size: 0.85rem;
             border-top: 1px solid var(--border-color);
-            width: 100%;
-            margin-top: auto;
+            margin-top: 40px;
         }
 
-        @media (max-width: 1150px) {
+        @media (max-width: 1200px) {
             .sidebar-ad {
                 display: none;
             }
@@ -214,9 +213,8 @@
 </head>
 <body>
 
-    <!-- PANTALLA DE BLOQUEO AD_BLOCK -->
     <div id="adblock-wall">
-        <div class="wall-card-modal">
+        <div class="wall-card">
             <h2>⚠️ Bloqueador Detectado</h2>
             <p>Por favor, desactiva tu bloqueador de anuncios para poder acceder a las instrucciones y descarga de scripts en <strong>PlaySyncTools</strong>.</p>
             <button class="wall-btn" onclick="location.reload()">Ya lo desactivé, recargar</button>
@@ -230,7 +228,7 @@
 
     <div class="page-layout">
         
-        <div class="sidebar-ad">
+        <div class="sidebar-ad" id="ad-wrapper-left">
             <script>
                 atOptions = {
                     'key' : '72b4ce04b0f9642774f79d77fb8b9139',
@@ -261,7 +259,7 @@
             </div>
         </div>
 
-        <div class="sidebar-ad">
+        <div class="sidebar-ad" id="ad-wrapper-right">
             <script>
                 atOptions = {
                     'key' : '72b4ce04b0f9642774f79d77fb8b9139',
@@ -280,79 +278,23 @@
         &copy; 2026 PlaySyncTools. Todos los derechos reservados.
     </footer>
 
-    <!-- Script de Activación del Muro Anti-AdBlock -->
     <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                const adScript = document.querySelector('script[src*="highperformanceformat.com"]');
-                if (!adScript) {
-                    document.getElementById('adblock-wall').style.display = 'flex';
-                }
-            }, 1200);
+        function checkAdBlocker() {
+            const wall = document.getElementById('adblock-wall');
+            const isScriptBlocked = typeof atOptions === 'undefined';
+            const leftAd = document.querySelector('#ad-wrapper-left iframe');
+            const rightAd = document.querySelector('#ad-wrapper-right iframe');
+            const areIframesMissing = !leftAd || !rightAd || leftAd.offsetHeight < 10 || rightAd.offsetHeight < 10;
+
+            if (isScriptBlocked || areIframesMissing) {
+                wall.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        window.addEventListener('load', () => {
+            setTimeout(checkAdBlocker, 1500);
         });
     </script>
 </body>
-    <style>
-    /* ... (mantén tus estilos anteriores) ... */
-
-    /* ASEGURAR QUE EL MURO ESTÉ POR ENCIMA DE TODO */
-    #adblock-wall {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.9);
-        backdrop-filter: blur(15px);
-        z-index: 999999; /* Valor altísimo */
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-
-    /* ESPACIADO PARA QUE LOS ANUNCIOS NO TOQUEN EL CENTRO */
-    .page-layout {
-        display: flex;
-        justify-content: center;
-        max-width: 1200px; /* Reducido ligeramente para dar aire */
-        margin: 20px auto;
-        gap: 40px; /* Más separación entre el centro y los banners */
-        padding: 0 20px;
-    }
-
-    .sidebar-ad {
-        width: 300px; /* Ajustado al tamaño de tu banner de XM */
-        flex-shrink: 0;
-    }
-
-    /* Evitar que el banner se vea "feo" forzando su tamaño */
-    .sidebar-ad iframe {
-        border-radius: 8px;
-        overflow: hidden;
-    }
-</style>
-
-<!-- Coloca este script al final, justo antes de cerrar el body -->
-<script>
-    window.addEventListener('load', () => {
-        // Función para verificar si el banner cargó algo de contenido
-        setTimeout(() => {
-            const ads = document.querySelectorAll('.sidebar-ad');
-            let adLoaded = false;
-            
-            ads.forEach(ad => {
-                // Si el div tiene un iframe o contenido dentro, consideramos que cargó
-                if (ad.innerHTML.trim().length > 100) { 
-                    adLoaded = true;
-                }
-            });
-
-            if (!adLoaded) {
-                document.getElementById('adblock-wall').style.display = 'flex';
-                document.body.style.overflow = 'hidden'; // Bloquea el scroll
-            }
-        }, 2000); // 2 segundos de espera para la carga
-    });
-</script>
 </html>
