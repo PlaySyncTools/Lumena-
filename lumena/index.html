@@ -24,7 +24,6 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            align-items: center;
         }
 
         #adblock-notice {
@@ -36,14 +35,12 @@
             text-align: center;
             font-weight: bold;
             font-size: 0.95rem;
-            width: 100%;
-            box-sizing: border-box;
-            margin-bottom: 20px;
+            margin-bottom: 0;
         }
 
         header {
             text-align: center;
-            padding: 20px 20px 10px;
+            padding: 30px 20px 10px;
         }
 
         .logo-container {
@@ -58,13 +55,34 @@
             margin: 0;
         }
 
-        .ad-container {
+        .page-layout {
             display: flex;
             justify-content: center;
-            align-items: center;
-            margin: 20px auto;
+            align-items: flex-start;
+            max-width: 1500px;
             width: 100%;
-            overflow: hidden;
+            margin: 20px auto;
+            gap: 20px;
+            padding: 0 15px;
+            box-sizing: border-box;
+            flex: 1;
+        }
+
+        .sidebar-ad {
+            width: 160px;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 700px;
         }
 
         .content-card {
@@ -72,11 +90,10 @@
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 30px;
-            max-width: 600px;
-            width: 90%;
+            width: 100%;
             box-sizing: border-box;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .content-card h2 {
@@ -139,6 +156,12 @@
             width: 100%;
             margin-top: auto;
         }
+
+        @media (max-width: 1150px) {
+            .sidebar-ad {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -153,48 +176,55 @@
         <p>Centro de Descarga e Instrucciones</p>
     </header>
 
-    <!-- ANUNCIO SUPERIOR (728x90) -->
-    <div class="ad-container" id="ad-box-top">
-        <script>
-            atOptions = {
-                'key' : '6dd544e81dbf025053db8c2431c7bea2',
-                'format' : 'iframe',
-                'height' : 90,
-                'width' : 728,
-                'params' : {}
-            };
-        </script>
-        <script src="https://www.highperformanceformat.com/6dd544e81dbf025053db8c2431c7bea2/invoke.js"></script>
-    </div>
-
-    <div class="content-card">
-        <h2>Lumena Auto Bot</h2>
-        <p>Automatización inteligente para optimizar tus sesiones de juego. Compatible con Tampermonkey.</p>
+    <div class="page-layout">
         
-        <a href="../lumena-bot.user.js" class="btn">📥 Descargar Script (.user.js)</a>
-
-        <div class="instructions">
-            <h3>Instrucciones rápidas de instalación:</h3>
-            <ol>
-                <li>Asegúrate de tener instalada la extensión <strong>Tampermonkey</strong> en tu navegador.</li>
-                <li>Haz clic en el botón de descarga superior. Se abrirá el instalador automático.</li>
-                <li>Presiona <strong>Instalar</strong> o <strong>Actualizar</strong>. ¡Listo! El bot funcionará solo.</li>
-            </ol>
+        <!-- LATERAL IZQUIERDO -->
+        <div class="sidebar-ad">
+            <script>
+                atOptions = {
+                    'key' : '72b4ce04b0f9642774f79d77fb8b9139',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://www.highperformanceformat.com/72b4ce04b0f9642774f79d77fb8b9139/invoke.js"></script>
         </div>
-    </div>
 
-    <!-- ANUNCIO INFERIOR (300x250) -->
-    <div class="ad-container">
-        <script>
-            atOptions = {
-                'key' : '72b4ce04b0f9642774f79d77fb8b9139',
-                'format' : 'iframe',
-                'height' : 250,
-                'width' : 300,
-                'params' : {}
-            };
-        </script>
-        <script src="https://www.highperformanceformat.com/72b4ce04b0f9642774f79d77fb8b9139/invoke.js"></script>
+        <!-- CONTENIDO CENTRAL -->
+        <div class="content-wrapper">
+            <div class="content-card">
+                <h2>Lumena Auto Bot</h2>
+                <p>Automatización inteligente para optimizar tus sesiones de juego. Compatible con Tampermonkey.</p>
+                
+                <a href="../lumena-bot.user.js" class="btn">📥 Descargar Script (.user.js)</a>
+
+                <div class="instructions">
+                    <h3>Instrucciones rápidas de instalación:</h3>
+                    <ol>
+                        <li>Asegúrate de tener instalada la extensión <strong>Tampermonkey</strong> en tu navegador.</li>
+                        <li>Haz clic en el botón de descarga superior. Se abrirá el instalador automático.</li>
+                        <li>Presiona <strong>Instalar</strong> o <strong>Actualizar</strong>. ¡Listo! El bot funcionará solo.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- LATERAL DERECHO -->
+        <div class="sidebar-ad">
+            <script>
+                atOptions = {
+                    'key' : '72b4ce04b0f9642774f79d77fb8b9139',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://www.highperformanceformat.com/72b4ce04b0f9642774f79d77fb8b9139/invoke.js"></script>
+        </div>
+
     </div>
 
     <footer>
@@ -206,9 +236,7 @@
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const adScript = document.querySelector('script[src*="highperformanceformat.com"]');
-                const adContainer = document.getElementById('ad-box-top');
-                
-                if (!adScript || (adContainer && adContainer.offsetHeight === 0)) {
+                if (!adScript) {
                     document.getElementById('adblock-notice').style.display = 'block';
                 }
             }, 1500);
