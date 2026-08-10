@@ -307,4 +307,67 @@
         });
     </script>
 </body>
+    <style>
+    /* ... (mantén tus estilos anteriores) ... */
+
+    /* ASEGURAR QUE EL MURO ESTÉ POR ENCIMA DE TODO */
+    #adblock-wall {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(15px);
+        z-index: 999999; /* Valor altísimo */
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    /* ESPACIADO PARA QUE LOS ANUNCIOS NO TOQUEN EL CENTRO */
+    .page-layout {
+        display: flex;
+        justify-content: center;
+        max-width: 1200px; /* Reducido ligeramente para dar aire */
+        margin: 20px auto;
+        gap: 40px; /* Más separación entre el centro y los banners */
+        padding: 0 20px;
+    }
+
+    .sidebar-ad {
+        width: 300px; /* Ajustado al tamaño de tu banner de XM */
+        flex-shrink: 0;
+    }
+
+    /* Evitar que el banner se vea "feo" forzando su tamaño */
+    .sidebar-ad iframe {
+        border-radius: 8px;
+        overflow: hidden;
+    }
+</style>
+
+<!-- Coloca este script al final, justo antes de cerrar el body -->
+<script>
+    window.addEventListener('load', () => {
+        // Función para verificar si el banner cargó algo de contenido
+        setTimeout(() => {
+            const ads = document.querySelectorAll('.sidebar-ad');
+            let adLoaded = false;
+            
+            ads.forEach(ad => {
+                // Si el div tiene un iframe o contenido dentro, consideramos que cargó
+                if (ad.innerHTML.trim().length > 100) { 
+                    adLoaded = true;
+                }
+            });
+
+            if (!adLoaded) {
+                document.getElementById('adblock-wall').style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // Bloquea el scroll
+            }
+        }, 2000); // 2 segundos de espera para la carga
+    });
+</script>
 </html>
