@@ -26,17 +26,65 @@
             min-height: 100vh;
         }
 
-        #adblock-notice {
-            display: none;
-            background-color: #7f1d1d;
-            border: 1px solid #991b1b;
-            color: #f87171;
-            padding: 15px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 0.95rem;
-            margin-bottom: 0;
+        /* --- EFECTO BLOQUEO AD_BLOCK (MODAL DE COBERTURA) --- */
+        #adblock-wall {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px); /* Efecto difuminado */
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 99999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
         }
+
+        .wall-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+
+        .wall-card h2 {
+            color: #f87171;
+            margin-top: 0;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .wall-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .wall-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .wall-btn:hover {
+            background-color: var(--accent-hover);
+        }
+        /* ---------------------------------------------------- */
 
         header {
             text-align: center;
@@ -59,7 +107,6 @@
             margin: 0;
         }
 
-        /* Contenedor general que reparte las columnas y el centro */
         .page-layout {
             display: flex;
             justify-content: center;
@@ -73,7 +120,6 @@
             flex: 1;
         }
 
-        /* Estilos para las columnas laterales de anuncios */
         .sidebar-ad {
             width: 160px;
             min-height: 600px;
@@ -83,7 +129,6 @@
             flex-shrink: 0;
         }
 
-        /* Contenido principal al centro */
         main {
             flex: 1;
             max-width: 900px;
@@ -169,7 +214,6 @@
             margin-top: 40px;
         }
 
-        /* En celulares o pantallas pequeñas, ocultamos los laterales para que no estorben */
         @media (max-width: 1150px) {
             .sidebar-ad {
                 display: none;
@@ -179,9 +223,13 @@
 </head>
 <body>
 
-    <!-- Aviso de Bloqueador -->
-    <div id="adblock-notice">
-        ⚠️ Detectamos un bloqueador de anuncios activo. Por favor, desactívalo para apoyar el mantenimiento y gratuidad de PlaySyncTools. ¡Gracias!
+    <!-- PANTALLA DE BLOQUEO AD_BLOCK -->
+    <div id="adblock-wall">
+        <div class="wall-card">
+            <h2>⚠️ Bloqueador Detectado</h2>
+            <p>Para poder utilizar <strong>PlaySyncTools</strong> y acceder a todas las herramientas gratuitas, por favor desactiva tu bloqueador de anuncios en este sitio web.</p>
+            <button class="wall-btn" onclick="location.reload()">Ya lo desactivé, recargar</button>
+        </div>
     </div>
 
     <header>
@@ -191,11 +239,8 @@
         <p>Plataforma centralizada de automatización y optimización para videojuegos.</p>
     </header>
 
-    <!-- DISEÑO DE 3 COLUMNAS (Lateral Izquierdo, Centro, Lateral Derecho) -->
     <div class="page-layout">
-        
-        <!-- LATERAL IZQUIERDO: Banner Vertical (Usamos temporalmente tu código adaptable o espacio) -->
-        <div class="sidebar-ad" id="left-ad">
+        <div class="sidebar-ad">
             <script>
                 atOptions = {
                     'key' : '72b4ce04b0f9642774f79d77fb8b9139',
@@ -208,7 +253,6 @@
             <script src="https://www.highperformanceformat.com/72b4ce04b0f9642774f79d77fb8b9139/invoke.js"></script>
         </div>
 
-        <!-- CONTENIDO PRINCIPAL -->
         <main>
             <div class="section-title">Herramientas Disponibles</div>
             
@@ -233,8 +277,7 @@
             </div>
         </main>
 
-        <!-- LATERAL DERECHO: Banner Vertical -->
-        <div class="sidebar-ad" id="right-ad">
+        <div class="sidebar-ad">
             <script>
                 atOptions = {
                     'key' : '72b4ce04b0f9642774f79d77fb8b9139',
@@ -246,22 +289,21 @@
             </script>
             <script src="https://www.highperformanceformat.com/72b4ce04b0f9642774f79d77fb8b9139/invoke.js"></script>
         </div>
-
     </div>
 
     <footer>
         &copy; 2026 PlaySyncTools. Todos los derechos reservados.
     </footer>
 
-    <!-- Script Detector de AdBlock -->
+    <!-- Script de Activación del Muro Anti-AdBlock -->
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const adScript = document.querySelector('script[src*="highperformanceformat.com"]');
                 if (!adScript) {
-                    document.getElementById('adblock-notice').style.display = 'block';
+                    document.getElementById('adblock-wall').style.display = 'flex';
                 }
-            }, 1500);
+            }, 1200);
         });
     </script>
 </body>
