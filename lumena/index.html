@@ -26,17 +26,65 @@
             min-height: 100vh;
         }
 
-        #adblock-notice {
+        /* --- EFECTO BLOQUEO AD_BLOCK (MODAL DE COBERTURA) --- */
+        #adblock-wall {
             display: none;
-            background-color: #7f1d1d;
-            border: 1px solid #991b1b;
-            color: #f87171;
-            padding: 15px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 0.95rem;
-            margin-bottom: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 99999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
         }
+
+        .wall-card-modal {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+
+        .wall-card-modal h2 {
+            color: #f87171;
+            margin-top: 0;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .wall-card-modal p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .wall-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .wall-btn:hover {
+            background-color: var(--accent-hover);
+        }
+        /* ---------------------------------------------------- */
 
         header {
             text-align: center;
@@ -166,9 +214,13 @@
 </head>
 <body>
 
-    <!-- Aviso de Bloqueador -->
-    <div id="adblock-notice">
-        ⚠️ Detectamos un bloqueador de anuncios activo. Por favor, desactívalo para apoyar el mantenimiento y gratuidad de PlaySyncTools. ¡Gracias!
+    <!-- PANTALLA DE BLOQUEO AD_BLOCK -->
+    <div id="adblock-wall">
+        <div class="wall-card-modal">
+            <h2>⚠️ Bloqueador Detectado</h2>
+            <p>Por favor, desactiva tu bloqueador de anuncios para poder acceder a las instrucciones y descarga de scripts en <strong>PlaySyncTools</strong>.</p>
+            <button class="wall-btn" onclick="location.reload()">Ya lo desactivé, recargar</button>
+        </div>
     </div>
 
     <header>
@@ -178,7 +230,6 @@
 
     <div class="page-layout">
         
-        <!-- LATERAL IZQUIERDO -->
         <div class="sidebar-ad">
             <script>
                 atOptions = {
@@ -192,7 +243,6 @@
             <script src="https://www.highperformanceformat.com/72b4ce04b0f9642774f79d77fb8b9139/invoke.js"></script>
         </div>
 
-        <!-- CONTENIDO CENTRAL -->
         <div class="content-wrapper">
             <div class="content-card">
                 <h2>Lumena Auto Bot</h2>
@@ -211,7 +261,6 @@
             </div>
         </div>
 
-        <!-- LATERAL DERECHO -->
         <div class="sidebar-ad">
             <script>
                 atOptions = {
@@ -231,15 +280,15 @@
         &copy; 2026 PlaySyncTools. Todos los derechos reservados.
     </footer>
 
-    <!-- Script Detector de AdBlock -->
+    <!-- Script de Activación del Muro Anti-AdBlock -->
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const adScript = document.querySelector('script[src*="highperformanceformat.com"]');
                 if (!adScript) {
-                    document.getElementById('adblock-notice').style.display = 'block';
+                    document.getElementById('adblock-wall').style.display = 'flex';
                 }
-            }, 1500);
+            }, 1200);
         });
     </script>
 </body>
