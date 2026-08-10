@@ -27,9 +27,23 @@
             align-items: center;
         }
 
+        #adblock-notice {
+            display: none;
+            background-color: #7f1d1d;
+            border: 1px solid #991b1b;
+            color: #f87171;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.95rem;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
         header {
             text-align: center;
-            padding: 40px 20px 20px;
+            padding: 20px 20px 10px;
         }
 
         .logo-container {
@@ -44,7 +58,6 @@
             margin: 0;
         }
 
-        /* Contenedor centrado para los anuncios */
         .ad-container {
             display: flex;
             justify-content: center;
@@ -130,13 +143,18 @@
 </head>
 <body>
 
+    <!-- Aviso de Bloqueador -->
+    <div id="adblock-notice">
+        ⚠️ Detectamos un bloqueador de anuncios activo. Por favor, desactívalo para apoyar el mantenimiento y gratuidad de PlaySyncTools. ¡Gracias!
+    </div>
+
     <header>
         <div class="logo-container">🤖 PlaySyncTools</div>
         <p>Centro de Descarga e Instrucciones</p>
     </header>
 
     <!-- ANUNCIO SUPERIOR (728x90) -->
-    <div class="ad-container">
+    <div class="ad-container" id="ad-box-top">
         <script>
             atOptions = {
                 'key' : '6dd544e81dbf025053db8c2431c7bea2',
@@ -153,7 +171,6 @@
         <h2>Lumena Auto Bot</h2>
         <p>Automatización inteligente para optimizar tus sesiones de juego. Compatible con Tampermonkey.</p>
         
-        <!-- Enlace al archivo del script en la raíz -->
         <a href="../lumena-bot.user.js" class="btn">📥 Descargar Script (.user.js)</a>
 
         <div class="instructions">
@@ -166,7 +183,7 @@
         </div>
     </div>
 
-    <!-- ANUNCIO INFERIOR / CUADRADO (300x250) -->
+    <!-- ANUNCIO INFERIOR (300x250) -->
     <div class="ad-container">
         <script>
             atOptions = {
@@ -184,5 +201,18 @@
         &copy; 2026 PlaySyncTools. Todos los derechos reservados.
     </footer>
 
+    <!-- Script Detector de AdBlock -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const adScript = document.querySelector('script[src*="highperformanceformat.com"]');
+                const adContainer = document.getElementById('ad-box-top');
+                
+                if (!adScript || (adContainer && adContainer.offsetHeight === 0)) {
+                    document.getElementById('adblock-notice').style.display = 'block';
+                }
+            }, 1500);
+        });
+    </script>
 </body>
 </html>
