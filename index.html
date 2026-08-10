@@ -109,7 +109,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            max-width: 900px;
+            max-width: 1400px;
             width: 100%;
             margin: 20px auto;
             gap: 20px;
@@ -124,12 +124,28 @@
             justify-content: center;
             align-items: center;
             min-height: 90px;
-            margin: 10px 0;
             overflow: hidden;
         }
 
-        main {
+        .middle-section {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
             width: 100%;
+            gap: 20px;
+        }
+
+        .sidebar-ad {
+            width: 160px;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        main {
+            flex: 1;
             max-width: 800px;
             box-sizing: border-box;
         }
@@ -206,6 +222,12 @@
             border-top: 1px solid var(--border-color);
             margin-top: 40px;
         }
+
+        @media (max-width: 1200px) {
+            .sidebar-ad {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -239,29 +261,61 @@
             <script src="https://www.highperformanceformat.com/72b4ce04b0f9642774f79d77fb8b9139/invoke.js"></script>
         </div>
 
-        <main>
-            <div class="section-title">Herramientas Disponibles</div>
+        <div class="middle-section">
             
-            <div class="grid-container">
-                <div class="card">
-                    <div>
-                        <span class="badge">ACTIVO / ACTUALIZABLE</span>
-                        <h3>Lumena Auto Bot</h3>
-                        <p>Bot automatizado para Lumena con gestión inteligente de equipo, sistema de ataques y reaparición automática en ciudad.</p>
-                    </div>
-                    <a href="lumena/" class="btn">Ver Detalles / Instalar</a>
-                </div>
-
-                <div class="card" style="opacity: 0.7;">
-                    <div>
-                        <span class="badge" style="background-color: #475569;">PRÓXIMAMENTE</span>
-                        <h3>Nuevo Juego / Herramienta</h3>
-                        <p>Espacio reservado para el próximo script o utilidad de automatización en desarrollo.</p>
-                    </div>
-                    <span class="btn" style="background-color: #334155; cursor: not-allowed;">Próximamente</span>
-                </div>
+            <!-- ANUNCIO IZQUIERDO -->
+            <div class="sidebar-ad" id="ad-wrapper-left">
+                <script>
+                    atOptions = {
+                        'key' : '72b4ce04b0f9642774f79d77fb8b9139',
+                        'format' : 'iframe',
+                        'height' : 600,
+                        'width' : 160,
+                        'params' : {}
+                    };
+                </script>
+                <script src="https://www.highperformanceformat.com/72b4ce04b0f9642774f79d77fb8b9139/invoke.js"></script>
             </div>
-        </main>
+
+            <main>
+                <div class="section-title">Herramientas Disponibles</div>
+                
+                <div class="grid-container">
+                    <div class="card">
+                        <div>
+                            <span class="badge">ACTIVO / ACTUALIZABLE</span>
+                            <h3>Lumena Auto Bot</h3>
+                            <p>Bot automatizado para Lumena con gestión inteligente de equipo, sistema de ataques y reaparición automática en ciudad.</p>
+                        </div>
+                        <a href="lumena/" class="btn">Ver Detalles / Instalar</a>
+                    </div>
+
+                    <div class="card" style="opacity: 0.7;">
+                        <div>
+                            <span class="badge" style="background-color: #475569;">PRÓXIMAMENTE</span>
+                            <h3>Nuevo Juego / Herramienta</h3>
+                            <p>Espacio reservado para el próximo script o utilidad de automatización en desarrollo.</p>
+                        </div>
+                        <span class="btn" style="background-color: #334155; cursor: not-allowed;">Próximamente</span>
+                    </div>
+                </div>
+            </main>
+
+            <!-- ANUNCIO DERECHO -->
+            <div class="sidebar-ad" id="ad-wrapper-right">
+                <script>
+                    atOptions = {
+                        'key' : '72b4ce04b0f9642774f79d77fb8b9139',
+                        'format' : 'iframe',
+                        'height' : 600,
+                        'width' : 160,
+                        'params' : {}
+                    };
+                </script>
+                <script src="https://www.highperformanceformat.com/72b4ce04b0f9642774f79d77fb8b9139/invoke.js"></script>
+            </div>
+
+        </div>
 
         <!-- ANUNCIO INFERIOR -->
         <div class="banner-ad" id="ad-wrapper-bottom">
