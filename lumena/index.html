@@ -64,7 +64,13 @@
 
         .hero-header { border-bottom: 1px solid var(--border-color); padding-bottom: 25px; margin-bottom: 30px; }
         .hero-header h2 { margin: 0; font-size: 2.2rem; }
-        .hero-header p { color: var(--text-muted); }
+        .hero-header p { color: var(--text-muted); font-size: 1.05rem; }
+
+        /* Estilos para las características del bot */
+        .features-box { background: var(--step-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 20px; margin-bottom: 25px; }
+        .features-box h4 { margin-top: 0; color: var(--accent-color); font-size: 1.1rem; }
+        .features-list { margin: 0; padding-left: 20px; color: var(--text-muted); line-height: 1.6; }
+        .features-list li { margin-bottom: 8px; }
 
         .download-action-box { background: var(--step-bg); border: 1px dashed var(--accent-color); border-radius: 10px; padding: 20px; display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-bottom: 35px; }
 
@@ -132,8 +138,18 @@
             <div class="content-card">
                 <div class="hero-header">
                     <h2>Lumena Auto Bot</h2>
-                    <p>Automatización inteligente diseñada para optimizar tus sesiones de juego de forma segura.</p>
+                    <p>Automatización inteligente diseñada para optimizar tus sesiones de juego de forma eficiente y segura.</p>
                     <a href="/" class="btn btn-outline" style="margin-top: 15px; display: inline-block;">⬅ Volver al Inicio</a>
+                </div>
+
+                <!-- NUEVA SECCIÓN DE DETALLES DEL SCRIPT -->
+                <div class="features-box">
+                    <h4>⚙️ ¿Qué hace este script?</h4>
+                    <ul class="features-list">
+                        <li><strong>Gestión Inteligente de Equipo:</strong> Monitorea y administra el equipamiento y recursos de manera automática.</li>
+                        <li><strong>Sistema de Ataques Automatizado:</strong> Ejecuta acciones de combate precisas para mejorar tu rendimiento en las sesiones largas.</li>
+                        <li><strong>Reaparición Automática en Ciudad:</strong> Detecta cuando tu personaje muere o necesita reaparecer, retornando a la zona segura sin intervención manual.</li>
+                    </ul>
                 </div>
 
                 <div class="download-action-box">
