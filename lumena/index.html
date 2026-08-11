@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lumena Auto Bot - Manual de Instalación | PlaySyncTools</title>
+    <!-- Importar una fuente moderna y llamativa -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;800&family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #0f172a;
             --card-bg: #1e293b;
             --accent-color: #3b82f6;
             --accent-hover: #2563eb;
+            --success-color: #10b981;
+            --success-hover: #059669;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border-color: #334155;
@@ -53,35 +57,65 @@
         header { text-align: center; padding: 20px 20px 10px; }
         .logo-container { font-size: 2.5rem; font-weight: bold; margin-bottom: 5px; }
 
-        /* Contenedor principal de la web y anuncios laterales 160x600 */
         .main-wrapper { display: flex; justify-content: center; align-items: flex-start; gap: 20px; max-width: 1250px; width: 100%; margin: 0 auto; flex: 1; }
         
         .side-ad { display: none; padding-top: 10px; width: 160px; flex-shrink: 0; }
         @media(min-width: 1100px) { .side-ad { display: block; } }
 
         .page-layout { display: flex; flex-direction: column; align-items: center; max-width: 800px; width: 100%; margin: 10px auto; padding: 0 15px; flex: 1; }
-        .content-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 35px; width: 100%; box-sizing: border-box; }
+        .content-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 35px; width: 100%; box-sizing: border-box; text-align: left; }
 
-        .hero-header { border-bottom: 1px solid var(--border-color); padding-bottom: 25px; margin-bottom: 30px; }
-        .hero-header h2 { margin: 0; font-size: 2.2rem; }
-        .hero-header p { color: var(--text-muted); font-size: 1.05rem; }
+        /* Título llamativo y centrado */
+        .hero-header { border-bottom: 1px solid var(--border-color); padding-bottom: 25px; margin-bottom: 30px; text-align: center; }
+        .hero-header h2 { 
+            margin: 0 0 10px 0; 
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.8rem; 
+            font-weight: 800;
+            background: linear-gradient(135deg, #60a5fa, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .hero-header p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 15px; }
 
-        /* Estilos para las características del bot */
         .features-box { background: var(--step-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 20px; margin-bottom: 25px; }
         .features-box h4 { margin-top: 0; color: var(--accent-color); font-size: 1.1rem; }
         .features-list { margin: 0; padding-left: 20px; color: var(--text-muted); line-height: 1.6; }
         .features-list li { margin-bottom: 8px; }
 
-        .download-action-box { background: var(--step-bg); border: 1px dashed var(--accent-color); border-radius: 10px; padding: 20px; display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-bottom: 35px; }
-
-        .btn { background-color: var(--accent-color); color: white; text-decoration: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; transition: 0.2s; white-space: nowrap; }
+        .step-item { background-color: var(--step-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 20px 25px; margin-bottom: 20px; }
+        .step-number { background-color: var(--accent-color); padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-right: 10px; }
+        
+        .btn { background-color: var(--accent-color); color: white; text-decoration: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; transition: 0.2s; display: inline-block; }
         .btn:hover { background-color: var(--accent-hover); }
         .btn-outline { background-color: transparent; border: 1px solid var(--accent-color); color: var(--accent-color); }
         .btn-outline:hover { background-color: var(--accent-color); color: white; }
 
-        .step-item { background-color: var(--step-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 20px 25px; margin-bottom: 20px; }
-        .step-number { background-color: var(--accent-color); padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-right: 10px; }
-        
+        /* Botón de descarga verde grande ubicado al final */
+        .download-btn-container { text-align: center; margin-top: 35px; width: 100%; }
+        .btn-download-green {
+            background-color: var(--success-color);
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-decoration: none;
+            padding: 16px 45px;
+            border-radius: 12px;
+            display: inline-block;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .btn-download-green:hover {
+            background-color: var(--success-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(16, 185, 129, 0.6);
+        }
+
         footer { text-align: center; padding: 20px; color: var(--text-muted); font-size: 0.85rem; margin-top: 40px; }
     </style>
 </head>
@@ -96,7 +130,6 @@
     </div>
 
     <header>
-        <!-- LOGO CON ENLACE AL INICIO -->
         <a href="/" class="logo-link">
             <div class="logo-container">🤖 PlaySyncTools</div>
             <p>Centro de Documentación e Instalación Oficial</p>
@@ -139,10 +172,9 @@
                 <div class="hero-header">
                     <h2>Lumena Auto Bot</h2>
                     <p>Automatización inteligente diseñada para optimizar tus sesiones de juego de forma eficiente y segura.</p>
-                    <a href="/" class="btn btn-outline" style="margin-top: 15px; display: inline-block;">⬅ Volver al Inicio</a>
+                    <a href="/" class="btn btn-outline" style="display: inline-block;">⬅ Volver al Inicio</a>
                 </div>
 
-                <!-- NUEVA SECCIÓN DE DETALLES DEL SCRIPT -->
                 <div class="features-box">
                     <h4>⚙️ ¿Qué hace este script?</h4>
                     <ul class="features-list">
@@ -152,14 +184,6 @@
                     </ul>
                 </div>
 
-                <div class="download-action-box">
-                    <div>
-                        <h4>Versión Estable v1.0</h4>
-                        <p>Archivo comprimido en MediaFire (.rar)</p>
-                    </div>
-                    <a href="https://www.mediafire.com/file/3bf8ourohfgkg3u/lumenavr1.0.rar/file" class="btn" target="_blank">📥 Descargar Script</a>
-                </div>
-
                 <h3>Guía de Instalación Paso a Paso</h3>
                 
                 <div class="step-item">
@@ -167,7 +191,7 @@
                 </div>
 
                 <div class="step-item">
-                    <span class="step-number">2</span> <strong>Descarga el archivo:</strong> Haz clic en el botón superior de descarga para ir a <strong>MediaFire</strong> y baja el archivo comprimido <code>.rar</code> a tu computadora.
+                    <span class="step-number">2</span> <strong>Descarga el archivo:</strong> Baja hasta el final de la página y haz clic en el botón verde de descarga para ir a <strong>MediaFire</strong> y obtener el archivo <code>.rar</code>.
                 </div>
 
                 <div class="step-item">
@@ -191,6 +215,11 @@
                   };
                 </script>
                 <script src="https://www.highperformanceformat.com/72b4ce04b0f9642774f79d77fb8b9139/invoke.js"></script>
+            </div>
+
+            <!-- BOTÓN DE DESCARGAR VERDE AL FINAL ABSOLUTO DE TODO -->
+            <div class="download-btn-container">
+                <a href="https://www.mediafire.com/file/3bf8ourohfgkg3u/lumenavr1.0.rar/file" class="btn-download-green" target="_blank">DESCARGAR</a>
             </div>
         </div>
 
