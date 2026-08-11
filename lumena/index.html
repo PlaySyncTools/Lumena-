@@ -16,74 +16,201 @@
             --step-bg: #090d16;
         }
 
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; min-height: 100vh; display: flex; flex-direction: column; }
-        .logo-link { text-decoration: none; color: inherit; display: block; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-        /* Estilos de anuncios */
-        .ad-container { text-align: center; margin: 15px 0; }
-        .side-ad { display: none; padding-top: 20px; }
+        .logo-link { text-decoration: none; color: inherit; display: block; transition: 0.2s; }
+        .logo-link:hover { opacity: 0.8; }
+
+        #adblock-wall {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(10, 15, 30, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 99999999;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .wall-card { background-color: var(--card-bg); border: 2px solid var(--accent-color); border-radius: 20px; padding: 40px; max-width: 480px; width: 100%; }
+        .wall-card h2 { color: #f87171; margin-top: 0; }
+        .wall-btn { background-color: var(--accent-color); color: white; border: none; padding: 14px 28px; font-weight: bold; border-radius: 10px; cursor: pointer; }
+
+        header { text-align: center; padding: 20px 20px 10px; }
+        .logo-container { font-size: 2.5rem; font-weight: bold; margin-bottom: 5px; }
+
+        /* Contenedor principal de la web y anuncios laterales 160x600 */
+        .main-wrapper { display: flex; justify-content: center; align-items: flex-start; gap: 20px; max-width: 1250px; width: 100%; margin: 0 auto; flex: 1; }
+        
+        .side-ad { display: none; padding-top: 10px; width: 160px; flex-shrink: 0; }
         @media(min-width: 1100px) { .side-ad { display: block; } }
 
-        /* Estructura */
-        .main-wrapper { display: flex; justify-content: center; gap: 15px; width: 100%; margin: 0 auto; flex: 1; }
-        .page-layout { display: flex; flex-direction: column; align-items: center; max-width: 800px; width: 100%; padding: 0 15px; }
-        
-        /* Componentes */
+        .page-layout { display: flex; flex-direction: column; align-items: center; max-width: 800px; width: 100%; margin: 10px auto; padding: 0 15px; flex: 1; }
         .content-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 35px; width: 100%; box-sizing: border-box; }
-        .btn { background-color: var(--accent-color); color: white; text-decoration: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; }
-        .step-item { background-color: var(--step-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 20px; margin-bottom: 20px; }
-        .step-number { background-color: var(--accent-color); padding: 4px 10px; border-radius: 4px; font-weight: bold; margin-right: 10px; }
+
+        .hero-header { border-bottom: 1px solid var(--border-color); padding-bottom: 25px; margin-bottom: 30px; }
+        .hero-header h2 { margin: 0; font-size: 2.2rem; }
+        .hero-header p { color: var(--text-muted); }
+
+        .download-action-box { background: var(--step-bg); border: 1px dashed var(--accent-color); border-radius: 10px; padding: 20px; display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-bottom: 35px; }
+
+        .btn { background-color: var(--accent-color); color: white; text-decoration: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; transition: 0.2s; white-space: nowrap; }
+        .btn:hover { background-color: var(--accent-hover); }
+        .btn-outline { background-color: transparent; border: 1px solid var(--accent-color); color: var(--accent-color); }
+        .btn-outline:hover { background-color: var(--accent-color); color: white; }
+
+        .step-item { background-color: var(--step-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 20px 25px; margin-bottom: 20px; }
+        .step-number { background-color: var(--accent-color); padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-right: 10px; }
+        
+        footer { text-align: center; padding: 20px; color: var(--text-muted); font-size: 0.85rem; margin-top: 40px; }
     </style>
 </head>
 <body>
 
-    <!-- ANUNCIO SUPERIOR -->
-    <div class="ad-container">
-        <script>atOptions = {'key' : '6dd544e81dbf025053db8c2431c7bea2', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {}};</script>
-        <script src="https://www.highperformanceformat.com/6dd544e81dbf025053db8c2431c7bea2/invoke.js"></script>
+    <div id="adblock-wall">
+        <div class="wall-card">
+            <h2>⚠️ Bloqueador Detectado</h2>
+            <p>Por favor, desactiva tu bloqueador para acceder a las instrucciones y descarga.</p>
+            <button class="wall-btn" onclick="location.reload()">Ya lo desactivé, recargar</button>
+        </div>
     </div>
 
-    <header style="text-align: center; padding: 20px;">
+    <header>
+        <!-- LOGO CON ENLACE AL INICIO -->
         <a href="/" class="logo-link">
-            <div style="font-size: 2.5rem; font-weight: bold;">🤖 PlaySyncTools</div>
-            <p style="color: var(--text-muted);">Centro de Documentación e Instalación Oficial</p>
+            <div class="logo-container">🤖 PlaySyncTools</div>
+            <p>Centro de Documentación e Instalación Oficial</p>
         </a>
+
+        <!-- ANUNCIO SUPERIOR -->
+        <div style="margin-top: 15px; text-align: center;">
+            <script>
+              atOptions = {
+                'key' : '6dd544e81dbf025053db8c2431c7bea2',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+              };
+            </script>
+            <script src="https://www.highperformanceformat.com/6dd544e81dbf025053db8c2431c7bea2/invoke.js"></script>
+        </div>
     </header>
 
     <div class="main-wrapper">
-        <!-- LATERAL IZQUIERDO -->
+        
+        <!-- ANUNCIO LATERAL IZQUIERDO (160x600) -->
         <div class="side-ad">
-            <script>atOptions = {'key' : '72b4ce04b0f9642774f79d77fb8b9139', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {}};</script>
-            <script src="https://www.highperformanceformat.com/72b4ce04b0f9642774f79d77fb8b9139/invoke.js"></script>
+            <script>
+              atOptions = {
+                'key' : 'c8ad3bfad4f49ccba0285f6af2ea3123',
+                'format' : 'iframe',
+                'height' : 600,
+                'width' : 160,
+                'params' : {}
+              };
+            </script>
+            <script src="https://www.highperformanceformat.com/c8ad3bfad4f49ccba0285f6af2ea3123/invoke.js"></script>
         </div>
 
         <!-- CONTENIDO CENTRAL -->
         <div class="page-layout">
             <div class="content-card">
-                <h2>Lumena Auto Bot</h2>
-                <div class="download-action-box" style="background: #090d16; border: 1px dashed var(--accent-color); padding: 20px; margin: 20px 0;">
-                    <a href="https://www.mediafire.com/file/3bf8ourohfgkg3u/lumenavr1.0.rar/file" class="btn" target="_blank">📥 Descargar Script (.rar)</a>
+                <div class="hero-header">
+                    <h2>Lumena Auto Bot</h2>
+                    <p>Automatización inteligente diseñada para optimizar tus sesiones de juego de forma segura.</p>
+                    <a href="/" class="btn btn-outline" style="margin-top: 15px; display: inline-block;">⬅ Volver al Inicio</a>
                 </div>
 
-                <h3>Guía de Instalación</h3>
-                <div class="step-item"><span class="step-number">1</span> Instala Tampermonkey.</div>
-                <div class="step-item"><span class="step-number">2</span> Descarga y descomprime el .rar de MediaFire.</div>
-                <div class="step-item"><span class="step-number">3</span> Arrastra el .user.js al tablero de Tampermonkey e instala.</div>
+                <div class="download-action-box">
+                    <div>
+                        <h4>Versión Estable v1.0</h4>
+                        <p>Archivo comprimido en MediaFire (.rar)</p>
+                    </div>
+                    <a href="https://www.mediafire.com/file/3bf8ourohfgkg3u/lumenavr1.0.rar/file" class="btn" target="_blank">📥 Descargar Script</a>
+                </div>
+
+                <h3>Guía de Instalación Paso a Paso</h3>
+                
+                <div class="step-item">
+                    <span class="step-number">1</span> <strong>Instala Tampermonkey:</strong> Busca e instala la extensión <strong>Tampermonkey</strong> en la tienda de tu navegador (Chrome, Edge, etc.).
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">2</span> <strong>Descarga el archivo:</strong> Haz clic en el botón superior de descarga para ir a <strong>MediaFire</strong> y baja el archivo comprimido <code>.rar</code> a tu computadora.
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">3</span> <strong>Descomprime el archivo:</strong> Abre el archivo <code>.rar</code> descargado y extrae su contenido (el archivo con formato <code>.user.js</code>) en una carpeta o en tu escritorio.
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">4</span> <strong>Instalación final:</strong> Abre el <strong>Tablero (Dashboard)</strong> de Tampermonkey en tu navegador, arrastra y suelta el archivo <code>.user.js</code> dentro de la ventana y presiona <strong>Instalar</strong>.
+                </div>
             </div>
 
             <!-- ANUNCIO INFERIOR -->
-            <div class="ad-container" style="margin-top: 30px;">
-                <!-- AQUÍ PUEDES REPETIR EL CÓDIGO DE ALGUNO DE TUS ANUNCIOS O INSERTAR OTRO DE ADSTERRA -->
-                <script>atOptions = {'key' : '6dd544e81dbf025053db8c2431c7bea2', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {}};</script>
-                <script src="https://www.highperformanceformat.com/6dd544e81dbf025053db8c2431c7bea2/invoke.js"></script>
+            <div style="margin-top: 30px; text-align: center; width: 100%;">
+                <script>
+                  atOptions = {
+                    'key' : '72b4ce04b0f9642774f79d77fb8b9139',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                  };
+                </script>
+                <script src="https://www.highperformanceformat.com/72b4ce04b0f9642774f79d77fb8b9139/invoke.js"></script>
             </div>
         </div>
 
-        <!-- LATERAL DERECHO -->
+        <!-- ANUNCIO LATERAL DERECHO (160x600) -->
         <div class="side-ad">
-            <script>atOptions = {'key' : 'c8ad3bfad4f49ccba0285f6af2ea3123', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {}};</script>
+            <script>
+              atOptions = {
+                'key' : 'c8ad3bfad4f49ccba0285f6af2ea3123',
+                'format' : 'iframe',
+                'height' : 600,
+                'width' : 160,
+                'params' : {}
+              };
+            </script>
             <script src="https://www.highperformanceformat.com/c8ad3bfad4f49ccba0285f6af2ea3123/invoke.js"></script>
         </div>
+
     </div>
+
+    <footer>
+        &copy; 2026 PlaySyncTools. Todos los derechos reservados.
+    </footer>
+
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const testAd = document.createElement('div');
+                testAd.innerHTML = '&nbsp;';
+                testAd.className = 'adsbox';
+                document.body.appendChild(testAd);
+                window.setTimeout(() => {
+                    if (testAd.offsetHeight === 0) document.getElementById('adblock-wall').style.display = 'flex';
+                    testAd.remove();
+                }, 100);
+            }, 1500);
+        });
+    </script>
 </body>
 </html>
