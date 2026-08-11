@@ -27,6 +27,9 @@
             min-height: 100vh;
         }
 
+        .logo-link { text-decoration: none; color: inherit; display: block; transition: 0.2s; }
+        .logo-link:hover { opacity: 0.8; }
+
         #adblock-wall {
             display: none;
             position: fixed;
@@ -43,23 +46,20 @@
             padding: 20px;
         }
 
-        .wall-card {
-            background-color: var(--card-bg);
-            border: 2px solid var(--accent-color);
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 480px;
-            width: 100%;
-        }
-
+        .wall-card { background-color: var(--card-bg); border: 2px solid var(--accent-color); border-radius: 20px; padding: 40px; max-width: 480px; width: 100%; }
         .wall-card h2 { color: #f87171; margin-top: 0; }
         .wall-btn { background-color: var(--accent-color); color: white; border: none; padding: 14px 28px; font-weight: bold; border-radius: 10px; cursor: pointer; }
 
-        header { text-align: center; padding: 30px 20px 10px; }
-        .logo-container { font-size: 2.5rem; font-weight: bold; margin-bottom: 10px; }
+        header { text-align: center; padding: 20px 20px 10px; }
+        .logo-container { font-size: 2.5rem; font-weight: bold; margin-bottom: 5px; }
 
-        .page-layout { display: flex; flex-direction: column; align-items: center; max-width: 900px; width: 100%; margin: 20px auto; padding: 0 15px; flex: 1; }
+        /* Contenedor principal de la web y anuncios laterales */
+        .main-wrapper { display: flex; justify-content: center; align-items: flex-start; gap: 15px; max-width: 1250px; width: 100%; margin: 0 auto; flex: 1; }
+        
+        .side-ad { display: none; padding-top: 20px; }
+        @media(min-width: 1100px) { .side-ad { display: block; } }
 
+        .page-layout { display: flex; flex-direction: column; align-items: center; max-width: 800px; width: 100%; margin: 10px auto; padding: 0 15px; flex: 1; }
         .content-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 35px; width: 100%; box-sizing: border-box; }
 
         .hero-header { border-bottom: 1px solid var(--border-color); padding-bottom: 25px; margin-bottom: 30px; }
@@ -70,6 +70,8 @@
 
         .btn { background-color: var(--accent-color); color: white; text-decoration: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; transition: 0.2s; white-space: nowrap; }
         .btn:hover { background-color: var(--accent-hover); }
+        .btn-outline { background-color: transparent; border: 1px solid var(--accent-color); color: var(--accent-color); }
+        .btn-outline:hover { background-color: var(--accent-color); color: white; }
 
         .step-item { background-color: var(--step-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 20px 25px; margin-bottom: 20px; }
         .step-number { background-color: var(--accent-color); padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-right: 10px; }
@@ -88,44 +90,94 @@
     </div>
 
     <header>
-        <div class="logo-container">🤖 PlaySyncTools</div>
-        <p>Centro de Documentación e Instalación Oficial</p>
+        <!-- LOGO CON ENLACE AL INICIO -->
+        <a href="/" class="logo-link">
+            <div class="logo-container">🤖 PlaySyncTools</div>
+            <p>Centro de Documentación e Instalación Oficial</p>
+        </a>
+
+        <!-- ANUNCIO SUPERIOR (728x90) -->
+        <div style="margin-top: 15px; text-align: center;">
+            <script>
+              atOptions = {
+                'key' : '6dd544e81dbf025053db8c2431c7bea2',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+              };
+            </script>
+            <script src="https://www.highperformanceformat.com/6dd544e81dbf025053db8c2431c7bea2/invoke.js"></script>
+        </div>
     </header>
 
-    <div class="page-layout">
-        <div class="content-card">
-            <div class="hero-header">
-                <h2>Lumena Auto Bot</h2>
-                <p>Automatización inteligente diseñada para optimizar tus sesiones de juego de forma segura.</p>
-            </div>
+    <div class="main-wrapper">
+        
+        <!-- ANUNCIO LATERAL IZQUIERDO (300x250) -->
+        <div class="side-ad">
+            <script>
+              atOptions = {
+                'key' : '72b4ce04b0f9642774f79d77fb8b9139',
+                'format' : 'iframe',
+                'height' : 250,
+                'width' : 300,
+                'params' : {}
+              };
+            </script>
+            <script src="https://www.highperformanceformat.com/72b4ce04b0f9642774f79d77fb8b9139/invoke.js"></script>
+        </div>
 
-            <!-- ENLACE DE MEDIAFIRE -->
-            <div class="download-action-box">
-                <div>
-                    <h4>Versión Estable v1.0</h4>
-                    <p>Archivo comprimido en MediaFire (.rar)</p>
+        <!-- CONTENIDO CENTRAL -->
+        <div class="page-layout">
+            <div class="content-card">
+                <div class="hero-header">
+                    <h2>Lumena Auto Bot</h2>
+                    <p>Automatización inteligente diseñada para optimizar tus sesiones de juego de forma segura.</p>
+                    <a href="/" class="btn btn-outline" style="margin-top: 15px; display: inline-block;">⬅ Volver al Inicio</a>
                 </div>
-                <a href="https://www.mediafire.com/file/3bf8ourohfgkg3u/lumenavr1.0.rar/file" class="btn" target="_blank">📥 Descargar Script</a>
-            </div>
 
-            <h3>Guía de Instalación Paso a Paso</h3>
-            
-            <div class="step-item">
-                <span class="step-number">1</span> <strong>Instala Tampermonkey:</strong> Busca e instala la extensión <strong>Tampermonkey</strong> en la tienda de tu navegador (Chrome, Edge, etc.).
-            </div>
+                <div class="download-action-box">
+                    <div>
+                        <h4>Versión Estable v1.0</h4>
+                        <p>Archivo comprimido en MediaFire (.rar)</p>
+                    </div>
+                    <a href="https://www.mediafire.com/file/3bf8ourohfgkg3u/lumenavr1.0.rar/file" class="btn" target="_blank">📥 Descargar Script</a>
+                </div>
 
-            <div class="step-item">
-                <span class="step-number">2</span> <strong>Descarga el archivo:</strong> Haz clic en el botón superior de descarga para ir a <strong>MediaFire</strong> y baja el archivo comprimido <code>.rar</code> a tu computadora.
-            </div>
+                <h3>Guía de Instalación Paso a Paso</h3>
+                
+                <div class="step-item">
+                    <span class="step-number">1</span> <strong>Instala Tampermonkey:</strong> Busca e instala la extensión <strong>Tampermonkey</strong> en la tienda de tu navegador (Chrome, Edge, etc.).
+                </div>
 
-            <div class="step-item">
-                <span class="step-number">3</span> <strong>Descomprime el archivo:</strong> Abre el archivo <code>.rar</code> descargado y extrae su contenido (el archivo con formato <code>.user.js</code>) en una carpeta o en tu escritorio.
-            </div>
+                <div class="step-item">
+                    <span class="step-number">2</span> <strong>Descarga el archivo:</strong> Haz clic en el botón superior de descarga para ir a <strong>MediaFire</strong> y baja el archivo comprimido <code>.rar</code> a tu computadora.
+                </div>
 
-            <div class="step-item">
-                <span class="step-number">4</span> <strong>Instalación final:</strong> Abre el <strong>Tablero (Dashboard)</strong> de Tampermonkey en tu navegador, arrastra y suelta el archivo <code>.user.js</code> dentro de la ventana y presiona <strong>Instalar</strong>.
+                <div class="step-item">
+                    <span class="step-number">3</span> <strong>Descomprime el archivo:</strong> Abre el archivo <code>.rar</code> descargado y extrae su contenido (el archivo con formato <code>.user.js</code>) en una carpeta o en tu escritorio.
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">4</span> <strong>Instalación final:</strong> Abre el <strong>Tablero (Dashboard)</strong> de Tampermonkey en tu navegador, arrastra y suelta el archivo <code>.user.js</code> dentro de la ventana y presiona <strong>Instalar</strong>.
+                </div>
             </div>
         </div>
+
+        <!-- ANUNCIO LATERAL DERECHO (160x600) -->
+        <div class="side-ad">
+            <script>
+              atOptions = {
+                'key' : 'c8ad3bfad4f49ccba0285f6af2ea3123',
+                'format' : 'iframe',
+                'height' : 600,
+                'width' : 160,
+                'params' : {}
+              };
+            </script>
+            <script src="https://www.highperformanceformat.com/c8ad3bfad4f49ccba0285f6af2ea3123/invoke.js"></script>
+        </div>
+
     </div>
 
     <footer>
@@ -133,7 +185,6 @@
     </footer>
 
     <script>
-        // Detector simple de adblock
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const testAd = document.createElement('div');
