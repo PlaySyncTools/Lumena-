@@ -234,60 +234,66 @@
             padding-left: 12px;
         }
 
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        .steps-container {
+            display: flex;
+            flex-direction: column;
             gap: 20px;
         }
 
-        .step-card {
+        .step-item {
             background-color: var(--step-bg);
             border: 1px solid var(--border-color);
             border-radius: 10px;
-            padding: 20px;
+            padding: 20px 25px;
             display: flex;
             flex-direction: column;
+            gap: 10px;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
             gap: 12px;
         }
 
         .step-number {
-            display: inline-block;
             background-color: var(--accent-color);
             color: white;
             font-size: 0.8rem;
             font-weight: bold;
-            padding: 3px 8px;
+            padding: 4px 10px;
             border-radius: 4px;
-            width: fit-content;
         }
 
-        .step-card h4 {
+        .step-item h4 {
             margin: 0;
             color: var(--text-main);
-            font-size: 1.05rem;
+            font-size: 1.1rem;
         }
 
-        .step-card p {
+        .step-item p, .step-item ul {
             margin: 0;
             color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.5;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
-        .step-image-placeholder {
-            width: 100%;
-            height: 120px;
-            background-color: #111827;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            text-align: center;
-            padding: 10px;
-            box-sizing: border-box;
+        .step-item ul {
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+
+        .step-item li {
+            margin-bottom: 6px;
+        }
+
+        .step-item a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .step-item a:hover {
+            text-decoration: underline;
         }
 
         footer {
@@ -318,7 +324,7 @@
 
     <header>
         <div class="logo-container">🤖 PlaySyncTools</div>
-        <p>Centro de Documentación e Instalación</p>
+        <p>Centro de Documentación e Instalación Oficial</p>
     </header>
 
     <div class="page-layout">
@@ -358,7 +364,7 @@
                     
                     <div class="hero-header">
                         <h2>Lumena Auto Bot</h2>
-                        <p>Automatización inteligente para optimizar tus sesiones de juego. Gestiona equipos, automatiza ataques y reaparece automáticamente en la ciudad de forma segura.</p>
+                        <p>Automatización inteligente diseñada para optimizar tus sesiones de juego. Gestiona equipos, automatiza ataques y reaparece automáticamente de forma segura.</p>
                     </div>
 
                     <!-- CAJA DE DESCARGA DIRECTA -->
@@ -370,40 +376,48 @@
                         <a href="../lumena-bot.user.js" class="btn">📥 Descargar Script</a>
                     </div>
 
-                    <!-- MANUAL DE INSTALACIÓN VISUAL -->
+                    <!-- MANUAL DE INSTALACIÓN PASO A PASO (NIVEL 0) -->
                     <div class="manual-section">
-                        <h3>Manual de Instalación Paso a Paso</h3>
+                        <h3>Guía de Instalación para Principiantes (Paso a Paso)</h3>
                         
-                        <div class="steps-grid">
+                        <div class="steps-container">
                             
                             <!-- Paso 1 -->
-                            <div class="step-card">
-                                <span class="step-number">PASO 1</span>
-                                <h4>Instalar Tampermonkey</h4>
-                                <p>Añade la extensión gestora de scripts a tu navegador (Chrome, Edge o Firefox).</p>
-                                <div class="step-image-placeholder">
-                                    [ Imagen de la extensión Tampermonkey en tienda ]
+                            <div class="step-item">
+                                <div class="step-header">
+                                    <span class="step-number">PASO 1</span>
+                                    <h4>Instalar la extensión Tampermonkey</h4>
                                 </div>
+                                <p>Para que el navegador entienda y ejecute scripts de juegos, necesitas instalar un gestor gratuito llamado Tampermonkey.</p>
+                                <ul>
+                                    <li>Entra a la tienda oficial de extensiones de tu navegador (Chrome Web Store, Microsoft Edge Add-ons o Firefox Add-ons).</li>
+                                    <li>Busca <strong>Tampermonkey</strong> y haz clic en <strong>Añadir / Instalar</strong>.</li>
+                                    <li>Asegúrate de fijar el icono de la extensión en la esquina superior derecha de tu navegador para tenerlo a la mano.</li>
+                                </ul>
                             </div>
 
                             <!-- Paso 2 -->
-                            <div class="step-card">
-                                <span class="step-number">PASO 2</span>
-                                <h4>Descargar el Bot</h4>
-                                <p>Haz clic en el botón superior de descarga para obtener el archivo .user.js.</p>
-                                <div class="step-image-placeholder">
-                                    [ Imagen haciendo clic en Descargar ]
+                            <div class="step-item">
+                                <div class="step-header">
+                                    <span class="step-number">PASO 2</span>
+                                    <h4>Descargar el archivo del Bot</h4>
                                 </div>
+                                <p>Haz clic en el botón superior que dice <strong>📥 Descargar Script</strong>. El archivo con terminación <code>.user.js</code> se guardará automáticamente en tu carpeta de descargas habitual.</p>
                             </div>
 
                             <!-- Paso 3 -->
-                            <div class="step-card">
-                                <span class="step-number">PASO 3</span>
-                                <h4>Confirmar Instalación</h4>
-                                <p>Se abrirá una pestaña de Tampermonkey. Presiona el botón <strong>Instalar</strong>.</p>
-                                <div class="step-image-placeholder">
-                                    [ Imagen de la ventana de instalación ]
+                            <div class="step-item">
+                                <div class="step-header">
+                                    <span class="step-number">PASO 3</span>
+                                    <h4>Activar el script (Método Infalible)</h4>
                                 </div>
+                                <p>Para evitar bloqueos o errores automáticos del navegador, realizaremos una instalación manual sumamente sencilla:</p>
+                                <ul>
+                                    <li>Haz clic sobre el icono de <strong>Tampermonkey</strong> en la barra superior de tu navegador y selecciona <strong>"Tablero"</strong> (Dashboard).</li>
+                                    <li>Abre tu carpeta de Descargas de la computadora y <strong>arrastra el archivo <code>lumena-bot.user.js</code></strong> directamente hacia la ventana abierta de Tampermonkey.</li>
+                                    <li>Se abrirá una pantalla con el código del script. Haz clic en el botón verde de <strong>Instalar</strong>.</li>
+                                    <li>¡Listo! Entra al juego y el bot se ejecutará de forma automática.</li>
+                                </ul>
                             </div>
 
                         </div>
