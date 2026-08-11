@@ -33,6 +33,10 @@
         .logo-link { text-decoration: none; color: inherit; display: block; transition: 0.2s; }
         .logo-link:hover { opacity: 0.8; }
 
+        .lang-selector { position: absolute; top: 15px; right: 20px; z-index: 1000; }
+        .lang-btn { background: var(--card-bg); border: 1px solid var(--accent-color); color: white; padding: 5px 12px; cursor: pointer; border-radius: 5px; font-weight: bold; }
+        .lang-btn:hover { background: var(--accent-color); }
+
         #adblock-wall {
             display: none;
             position: fixed;
@@ -91,7 +95,6 @@
         .btn-outline { background-color: transparent; border: 1px solid var(--accent-color); color: var(--accent-color); }
         .btn-outline:hover { background-color: var(--accent-color); color: white; }
 
-        /* Botón verde gigante al final */
         .download-btn-container { text-align: center; margin-top: 35px; width: 100%; }
         .btn-download-green {
             background-color: var(--success-color);
@@ -119,18 +122,23 @@
 </head>
 <body>
 
+    <div class="lang-selector">
+        <button class="lang-btn" onclick="setLanguage('es')">ES</button>
+        <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+    </div>
+
     <div id="adblock-wall">
         <div class="wall-card">
-            <h2>⚠️ Bloqueador Detectado</h2>
-            <p>Por favor, desactiva tu bloqueador para acceder a las instrucciones y descarga.</p>
-            <button class="wall-btn" onclick="location.reload()">Ya lo desactivé, recargar</button>
+            <h2 data-es="⚠️ Bloqueador Detectado" data-en="⚠️ AdBlock Detected">⚠️ Bloqueador Detectado</h2>
+            <p data-es="Por favor, desactiva tu bloqueador para acceder a las instrucciones y descarga." data-en="Please disable your adblocker to access instructions and download.">Por favor, desactiva tu bloqueador para acceder a las instrucciones y descarga.</p>
+            <button class="wall-btn" onclick="location.reload()" data-es="Ya lo desactivé, recargar" data-en="I disabled it, reload">Ya lo desactivé, recargar</button>
         </div>
     </div>
 
     <header>
         <a href="/" class="logo-link">
             <div class="logo-container">🤖 PlaySyncTools</div>
-            <p>Centro de Documentación e Instalación Oficial</p>
+            <p data-es="Centro de Documentación e Instalación Oficial" data-en="Official Documentation and Installation Center">Centro de Documentación e Instalación Oficial</p>
         </a>
 
         <!-- ANUNCIO SUPERIOR -->
@@ -151,35 +159,35 @@
             <div class="content-card">
                 <div class="hero-header">
                     <h2>Lumena Auto Bot</h2>
-                    <p>Automatización inteligente diseñada para optimizar tus sesiones de juego de forma eficiente y segura.</p>
-                    <a href="/" class="btn btn-outline" style="display: inline-block;">⬅ Volver al Inicio</a>
+                    <p data-es="Automatización inteligente diseñada para optimizar tus sesiones de juego de forma eficiente y segura." data-en="Intelligent automation designed to optimize your gaming sessions efficiently and securely.">Automatización inteligente diseñada para optimizar tus sesiones de juego de forma eficiente y segura.</p>
+                    <a href="/" class="btn btn-outline" style="display: inline-block;" data-es="⬅ Volver al Inicio" data-en="⬅ Back to Home">⬅ Volver al Inicio</a>
                 </div>
 
                 <div class="features-box">
-                    <h4>⚙️ ¿Qué hace este script?</h4>
+                    <h4 data-es="⚙️ ¿Qué hace este script?" data-en="⚙️ What does this script do?">⚙️ ¿Qué hace este script?</h4>
                     <ul class="features-list">
-                        <li><strong>Gestión Inteligente de Equipo:</strong> Monitorea y administra el equipamiento y recursos de manera automática.</li>
-                        <li><strong>Sistema de Ataques Automatizado:</strong> Ejecuta acciones de combate precisas para mejorar tu rendimiento en las sesiones largas.</li>
-                        <li><strong>Reaparición Automática en Ciudad:</strong> Detecta cuando tu personaje muere o necesita reaparecer, retornando a la zona segura sin intervención manual.</li>
+                        <li><strong data-es="Gestión Inteligente de Equipo:" data-en="Smart Gear Management:">Gestión Inteligente de Equipo:</strong> <span data-es="Monitorea y administra el equipamiento y recursos de manera automática." data-en="Monitors and manages equipment and resources automatically.">Monitorea y administra el equipamiento y recursos de manera automática.</span></li>
+                        <li><strong data-es="Sistema de Ataques Automatizado:" data-en="Automated Attack System:">Sistema de Ataques Automatizado:</strong> <span data-es="Ejecuta acciones de combate precisas para mejorar tu rendimiento en las sesiones largas." data-en="Executes precise combat actions to improve your performance in long sessions.">Ejecuta acciones de combate precisas para mejorar tu rendimiento en las sesiones largas.</span></li>
+                        <li><strong data-es="Reaparición Automática en Ciudad:" data-en="Automatic City Respawn:">Reaparición Automática en Ciudad:</strong> <span data-es="Detecta cuando tu personaje muere o necesita reaparecer, retornando a la zona segura sin intervención manual." data-en="Detects when your character dies or needs to respawn, returning to the safe zone without manual intervention.">Detecta cuando tu personaje muere o necesita reaparecer, retornando a la zona segura sin intervención manual.</span></li>
                     </ul>
                 </div>
 
-                <h3>Guía de Instalación Paso a Paso</h3>
+                <h3 data-es="Guía de Instalación Paso a Paso" data-en="Step-by-Step Installation Guide">Guía de Instalación Paso a Paso</h3>
                 
                 <div class="step-item">
-                    <span class="step-number">1</span> <strong>Instala Tampermonkey:</strong> Busca e instala la extensión <strong>Tampermonkey</strong> en la tienda de tu navegador (Chrome, Edge, etc.).
+                    <span class="step-number">1</span> <strong data-es="Instala Tampermonkey:" data-en="Install Tampermonkey:">Instala Tampermonkey:</strong> <span data-es="Busca e instala la extensión Tampermonkey en la tienda de tu navegador (Chrome, Edge, etc.)." data-en="Search and install the Tampermonkey extension in your browser store (Chrome, Edge, etc.).">Busca e instala la extensión <strong>Tampermonkey</strong> en la tienda de tu navegador (Chrome, Edge, etc.).</span>
                 </div>
 
                 <div class="step-item">
-                    <span class="step-number">2</span> <strong>Descarga el archivo:</strong> Baja hasta el final de la página y haz clic en el botón verde de descarga para ir a <strong>MediaFire</strong> y obtener el archivo <code>.rar</code>.
+                    <span class="step-number">2</span> <strong data-es="Descarga el archivo:" data-en="Download the file:">Descarga el archivo:</strong> <span data-es="Baja hasta el final de la página y haz clic en el botón verde de descarga para ir a MediaFire y obtener el archivo .rar." data-en="Scroll down to the bottom of the page and click the green download button to go to MediaFire and get the .rar file.">Baja hasta el final de la página y haz clic en el botón verde de descarga para ir a <strong>MediaFire</strong> y obtener el archivo <code>.rar</code>.</span>
                 </div>
 
                 <div class="step-item">
-                    <span class="step-number">3</span> <strong>Descomprime el archivo:</strong> Abre el archivo <code>.rar</code> descargado y extrae su contenido (el archivo con formato <code>.user.js</code>) en una carpeta o en tu escritorio.
+                    <span class="step-number">3</span> <strong data-es="Descomprime el archivo:" data-en="Unzip the file:">Descomprime el archivo:</strong> <span data-es="Abre el archivo .rar descargado y extrae su contenido (el archivo con formato .user.js) en una carpeta o en tu escritorio." data-en="Open the downloaded .rar file and extract its content (.user.js format) into a folder or on your desktop.">Abre el archivo <code>.rar</code> descargado y extrae su contenido (el archivo con formato <code>.user.js</code>) en una carpeta o en tu escritorio.</span>
                 </div>
 
                 <div class="step-item">
-                    <span class="step-number">4</span> <strong>Instalación final:</strong> Abre el <strong>Tablero (Dashboard)</strong> de Tampermonkey en tu navegador, arrastra y suelta el archivo <code>.user.js</code> dentro de la ventana y presiona <strong>Instalar</strong>.
+                    <span class="step-number">4</span> <strong data-es="Instalación final:" data-en="Final installation:">Instalación final:</strong> <span data-es="Abre el Tablero (Dashboard) de Tampermonkey en tu navegador, arrastra y suelta el archivo .user.js dentro de la ventana y presiona Instalar." data-en="Open the Tampermonkey Dashboard in your browser, drag and drop the .user.js file into the window and click Install.">Abre el <strong>Tablero (Dashboard)</strong> de Tampermonkey en tu navegador, arrastra y suelta el archivo <code>.user.js</code> dentro de la ventana y presiona <strong>Instalar</strong>.</span>
                 </div>
             </div>
 
@@ -191,7 +199,7 @@
 
             <!-- BOTÓN DE DESCARGAR VERDE AL FINAL ABSOLUTO -->
             <div class="download-btn-container">
-                <a href="https://www.mediafire.com/file/3bf8ourohfgkg3u/lumenavr1.0.rar/file" class="btn-download-green" target="_blank">DESCARGAR</a>
+                <a href="https://www.mediafire.com/file/3bf8ourohfgkg3u/lumenavr1.0.rar/file" class="btn-download-green" target="_blank" data-es="DESCARGAR" data-en="DOWNLOAD">DESCARGAR</a>
             </div>
         </div>
 
@@ -207,7 +215,17 @@
     </footer>
 
     <script>
-        window.addEventListener('load', () => {
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-es]').forEach(el => {
+                el.innerText = el.getAttribute('data-' + lang);
+            });
+            localStorage.setItem('lang', lang);
+        }
+        window.onload = () => {
+            const savedLang = localStorage.getItem('lang') || 'es';
+            setLanguage(savedLang);
+
+            // Script Anti-AdBlock
             setTimeout(() => {
                 const testAd = document.createElement('div');
                 testAd.innerHTML = '&nbsp;';
@@ -218,7 +236,7 @@
                     testAd.remove();
                 }, 100);
             }, 1500);
-        });
+        };
     </script>
 </body>
 </html>
