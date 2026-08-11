@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumena Auto Bot - PlaySyncTools</title>
+    <title>Lumena Auto Bot - Manual de Instalación | PlaySyncTools</title>
     <style>
         :root {
             --bg-color: #0f172a;
@@ -13,6 +13,7 @@
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border-color: #334155;
+            --step-bg: #090d16;
         }
 
         body {
@@ -147,7 +148,7 @@
 
         .content-wrapper {
             flex: 1;
-            max-width: 800px;
+            max-width: 900px;
             box-sizing: border-box;
         }
 
@@ -155,60 +156,138 @@
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 30px;
+            padding: 35px;
             box-sizing: border-box;
         }
 
-        .content-card h2 {
-            margin-top: 0;
-            color: var(--text-main);
-            font-size: 1.8rem;
+        .hero-header {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 25px;
         }
 
-        .content-card p {
+        .hero-header h2 {
+            margin: 0;
+            color: var(--text-main);
+            font-size: 2.2rem;
+        }
+
+        .hero-header p {
+            margin: 0;
             color: var(--text-muted);
-            margin-bottom: 25px;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        .download-action-box {
+            background: var(--step-bg);
+            border: 1px dashed var(--accent-color);
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .download-info h4 {
+            margin: 0 0 5px 0;
+            color: var(--text-main);
+            font-size: 1.1rem;
+        }
+
+        .download-info p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
         .btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             background-color: var(--accent-color);
             color: white;
             text-decoration: none;
             padding: 12px 25px;
             border-radius: 8px;
             font-weight: bold;
-            font-size: 1.1rem;
-            transition: background-color 0.2s;
-            margin-bottom: 25px;
+            font-size: 1rem;
+            transition: background-color 0.2s, transform 0.1s;
         }
 
         .btn:hover {
             background-color: var(--accent-hover);
+            transform: translateY(-2px);
         }
 
-        .instructions {
-            text-align: left;
-            border-top: 1px solid var(--border-color);
-            padding-top: 20px;
-            margin-top: 20px;
-        }
-
-        .instructions h3 {
-            font-size: 1.1rem;
+        .manual-section h3 {
+            font-size: 1.4rem;
             color: var(--text-main);
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 12px;
         }
 
-        .instructions ol {
-            color: var(--text-muted);
-            padding-left: 20px;
-            line-height: 1.6;
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .step-card {
+            background-color: var(--step-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .step-number {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 4px;
+            width: fit-content;
+        }
+
+        .step-card h4 {
             margin: 0;
+            color: var(--text-main);
+            font-size: 1.05rem;
         }
 
-        .instructions li strong {
-            color: var(--text-main);
+        .step-card p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .step-image-placeholder {
+            width: 100%;
+            height: 120px;
+            background-color: #111827;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
         }
 
         footer {
@@ -239,7 +318,7 @@
 
     <header>
         <div class="logo-container">🤖 PlaySyncTools</div>
-        <p>Centro de Descarga e Instrucciones</p>
+        <p>Centro de Documentación e Instalación</p>
     </header>
 
     <div class="page-layout">
@@ -276,19 +355,60 @@
 
             <div class="content-wrapper">
                 <div class="content-card">
-                    <h2>Lumena Auto Bot</h2>
-                    <p>Automatización inteligente para optimizar tus sesiones de juego. Compatible con Tampermonkey.</p>
                     
-                    <a href="../lumena-bot.user.js" class="btn">📥 Descargar Script (.user.js)</a>
-
-                    <div class="instructions">
-                        <h3>Instrucciones rápidas de instalación:</h3>
-                        <ol>
-                            <li>Asegúrate de tener instalada la extensión <strong>Tampermonkey</strong> en tu navegador.</li>
-                            <li>Haz clic en el botón de descarga superior. Se abrirá el instalador automático.</li>
-                            <li>Presiona <strong>Instalar</strong> o <strong>Actualizar</strong>. ¡Listo! El bot funcionará solo.</li>
-                        </ol>
+                    <div class="hero-header">
+                        <h2>Lumena Auto Bot</h2>
+                        <p>Automatización inteligente para optimizar tus sesiones de juego. Gestiona equipos, automatiza ataques y reaparece automáticamente en la ciudad de forma segura.</p>
                     </div>
+
+                    <!-- CAJA DE DESCARGA DIRECTA -->
+                    <div class="download-action-box">
+                        <div class="download-info">
+                            <h4>Versión Estable Actualizada</h4>
+                            <p>Archivo de script compatible con Tampermonkey (.user.js)</p>
+                        </div>
+                        <a href="../lumena-bot.user.js" class="btn">📥 Descargar Script</a>
+                    </div>
+
+                    <!-- MANUAL DE INSTALACIÓN VISUAL -->
+                    <div class="manual-section">
+                        <h3>Manual de Instalación Paso a Paso</h3>
+                        
+                        <div class="steps-grid">
+                            
+                            <!-- Paso 1 -->
+                            <div class="step-card">
+                                <span class="step-number">PASO 1</span>
+                                <h4>Instalar Tampermonkey</h4>
+                                <p>Añade la extensión gestora de scripts a tu navegador (Chrome, Edge o Firefox).</p>
+                                <div class="step-image-placeholder">
+                                    [ Imagen de la extensión Tampermonkey en tienda ]
+                                </div>
+                            </div>
+
+                            <!-- Paso 2 -->
+                            <div class="step-card">
+                                <span class="step-number">PASO 2</span>
+                                <h4>Descargar el Bot</h4>
+                                <p>Haz clic en el botón superior de descarga para obtener el archivo .user.js.</p>
+                                <div class="step-image-placeholder">
+                                    [ Imagen haciendo clic en Descargar ]
+                                </div>
+                            </div>
+
+                            <!-- Paso 3 -->
+                            <div class="step-card">
+                                <span class="step-number">PASO 3</span>
+                                <h4>Confirmar Instalación</h4>
+                                <p>Se abrirá una pestaña de Tampermonkey. Presiona el botón <strong>Instalar</strong>.</p>
+                                <div class="step-image-placeholder">
+                                    [ Imagen de la ventana de instalación ]
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
