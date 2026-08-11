@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PlaySyncTools - Automatización y Herramientas de Juego</title>
+    <title>PlaySyncTools - Automatización y Optimización</title>
+    <!-- Verificación de Google Search Console -->
+    <meta name="google-site-verification" content="64cd3e14ae5de54f" />
     <style>
         :root {
             --bg-color: #0f172a;
@@ -13,6 +15,8 @@
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border-color: #334155;
+            --step-bg: #090d16;
+            --badge-green: #10b981;
         }
 
         body {
@@ -26,6 +30,10 @@
             min-height: 100vh;
         }
 
+        .logo-link { text-decoration: none; color: inherit; display: block; transition: 0.2s; }
+        .logo-link:hover { opacity: 0.8; }
+
+        /* Muro AdBlock */
         #adblock-wall {
             display: none;
             position: fixed;
@@ -35,200 +43,41 @@
             height: 100vh;
             background: rgba(10, 15, 30, 0.98);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             z-index: 99999999;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 20px;
-            box-sizing: border-box;
         }
 
-        .wall-card {
-            background-color: var(--card-bg);
-            border: 2px solid var(--accent-color);
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 480px;
-            width: 100%;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-        }
+        .wall-card { background-color: var(--card-bg); border: 2px solid var(--accent-color); border-radius: 20px; padding: 40px; max-width: 480px; width: 100%; }
+        .wall-card h2 { color: #f87171; margin-top: 0; }
+        .wall-btn { background-color: var(--accent-color); color: white; border: none; padding: 14px 28px; font-weight: bold; border-radius: 10px; cursor: pointer; }
 
-        .wall-card h2 {
-            color: #f87171;
-            margin-top: 0;
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-        }
+        header { text-align: center; padding: 20px 20px 10px; }
+        .logo-container { font-size: 2.5rem; font-weight: bold; margin-bottom: 5px; }
 
-        .wall-card p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
+        /* Estructura general con laterales de 160x600 */
+        .main-wrapper { display: flex; justify-content: center; align-items: flex-start; gap: 20px; max-width: 1250px; width: 100%; margin: 0 auto; flex: 1; }
+        .side-ad { display: none; padding-top: 10px; width: 160px; flex-shrink: 0; }
+        @media(min-width: 1100px) { .side-ad { display: block; } }
 
-        .wall-btn {
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
+        .page-layout { display: flex; flex-direction: column; align-items: center; max-width: 800px; width: 100%; margin: 10px auto; padding: 0 15px; flex: 1; }
+        .content-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 35px; width: 100%; box-sizing: border-box; }
 
-        .wall-btn:hover {
-            background-color: var(--accent-hover);
-        }
+        .section-title { font-size: 1.4rem; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+        
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .tool-box { background-color: var(--step-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; }
+        
+        .status-badge { display: inline-block; background-color: var(--badge-green); color: white; font-size: 0.75rem; font-weight: bold; padding: 4px 8px; border-radius: 4px; margin-bottom: 10px; }
+        .status-badge.soon { background-color: #64748b; }
 
-        header {
-            text-align: center;
-            padding: 30px 20px 10px;
-        }
+        .btn { background-color: var(--accent-color); color: white; text-decoration: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; text-align: center; transition: 0.2s; display: inline-block; margin-top: 15px; }
+        .btn:hover { background-color: var(--accent-hover); }
+        .btn.disabled { background-color: #334155; color: var(--text-muted); pointer-events: none; }
 
-        .logo-container {
-            font-size: 2.5rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-
-        header p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            margin: 0;
-        }
-
-        .page-layout {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 1400px;
-            width: 100%;
-            margin: 20px auto;
-            gap: 20px;
-            padding: 0 15px;
-            box-sizing: border-box;
-            flex: 1;
-        }
-
-        .banner-ad {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 90px;
-            overflow: hidden;
-        }
-
-        .middle-section {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            width: 100%;
-            gap: 20px;
-        }
-
-        .sidebar-ad {
-            width: 160px;
-            min-height: 600px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex-shrink: 0;
-            overflow: hidden;
-        }
-
-        main {
-            flex: 1;
-            max-width: 800px;
-            box-sizing: border-box;
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 10px;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            box-sizing: border-box;
-        }
-
-        .card h3 {
-            margin-top: 0;
-            color: var(--text-main);
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .badge {
-            display: inline-block;
-            background-color: #047857;
-            color: #d1fae5;
-            padding: 4px 8px;
-            font-size: 0.75rem;
-            border-radius: 4px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            width: fit-content;
-        }
-
-        .btn {
-            display: block;
-            text-align: center;
-            background-color: var(--accent-color);
-            color: white;
-            text-decoration: none;
-            padding: 12px 15px;
-            border-radius: 8px;
-            font-weight: bold;
-            margin-top: 15px;
-            transition: background-color 0.2s;
-        }
-
-        .btn:hover {
-            background-color: var(--accent-hover);
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            border-top: 1px solid var(--border-color);
-            margin-top: 40px;
-        }
-
-        @media (max-width: 1200px) {
-            .sidebar-ad {
-                display: none;
-            }
-        }
+        footer { text-align: center; padding: 20px; color: var(--text-muted); font-size: 0.85rem; margin-top: 40px; }
     </style>
 </head>
 <body>
@@ -236,102 +85,70 @@
     <div id="adblock-wall">
         <div class="wall-card">
             <h2>⚠️ Bloqueador Detectado</h2>
-            <p>Por favor, desactiva tu bloqueador de anuncios para poder acceder a las instrucciones y descarga de scripts en <strong>PlaySyncTools</strong>.</p>
-            <button class="wall-btn" id="reload-btn" onclick="checkAdblockBeforeReload()">Ya lo desactivé, recargar</button>
+            <p>Por favor, desactiva tu bloqueador para acceder a las herramientas y descargas.</p>
+            <button class="wall-btn" onclick="location.reload()">Ya lo desactivé, recargar</button>
         </div>
     </div>
 
     <header>
-        <div class="logo-container">🤖 PlaySyncTools</div>
-        <p>Plataforma centralizada de automatización y optimización para videojuegos.</p>
+        <a href="/" class="logo-link">
+            <div class="logo-container">🤖 PlaySyncTools</div>
+            <p>Plataforma centralizada de automatización y optimización para videojuegos.</p>
+        </a>
+
+        <!-- ANUNCIO SUPERIOR -->
+        <div style="margin-top: 15px; text-align: center;">
+            <script>atOptions = {'key' : '6dd544e81dbf025053db8c2431c7bea2', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {}};</script>
+            <script src="https://www.highperformanceformat.com/6dd544e81dbf025053db8c2431c7bea2/invoke.js"></script>
+        </div>
     </header>
 
-    <div class="page-layout">
-        
-        <!-- ANUNCIO SUPERIOR -->
-        <div class="banner-ad" id="ad-wrapper-top">
-            <script>
-                atOptions = {
-                    'key' : '72b4ce04b0f9642774f79d77fb8b9139',
-                    'format' : 'iframe',
-                    'height' : 90,
-                    'width' : 728,
-                    'params' : {}
-                };
-            </script>
-            <script src="https://www.highperformanceformat.com/72b4ce04b0f9642774f79d77fb8b9139/invoke.js"></script>
+    <div class="main-wrapper">
+        <!-- LATERAL IZQUIERDO (160x600) -->
+        <div class="side-ad">
+            <script>atOptions = {'key' : 'c8ad3bfad4f49ccba0285f6af2ea3123', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {}};</script>
+            <script src="https://www.highperformanceformat.com/c8ad3bfad4f49ccba0285f6af2ea3123/invoke.js"></script>
         </div>
 
-        <div class="middle-section">
-            
-            <!-- ANUNCIO IZQUIERDO (160x600) -->
-            <div class="sidebar-ad" id="ad-wrapper-left">
-                <script>
-                    atOptions = {
-                        'key' : 'c8ad3bfad4f49ccba0285f6af2ea3123',
-                        'format' : 'iframe',
-                        'height' : 600,
-                        'width' : 160,
-                        'params' : {}
-                    };
-                </script>
-                <script src="https://www.highperformanceformat.com/c8ad3bfad4f49ccba0285f6af2ea3123/invoke.js"></script>
-            </div>
-
-            <main>
+        <div class="page-layout">
+            <div class="content-card">
                 <div class="section-title">Herramientas Disponibles</div>
                 
-                <div class="grid-container">
-                    <div class="card">
+                <div class="tools-grid">
+                    <!-- Tarjeta Lumena Auto Bot -->
+                    <div class="tool-box">
                         <div>
-                            <span class="badge">ACTIVO / ACTUALIZABLE</span>
+                            <span class="status-badge">ACTIVO / ACTUALIZABLE</span>
                             <h3>Lumena Auto Bot</h3>
-                            <p>Bot automatizado para Lumena con gestión inteligente de equipo, sistema de ataques y reaparición automática en ciudad.</p>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Bot automatizado para Lumena con gestión inteligente de equipo, sistema de ataques y reaparición automática en ciudad.</p>
                         </div>
                         <a href="lumena/" class="btn">Ver Detalles / Instalar</a>
                     </div>
 
-                    <div class="card" style="opacity: 0.7;">
+                    <!-- Próximo Lanzamiento -->
+                    <div class="tool-box" style="opacity: 0.7;">
                         <div>
-                            <span class="badge" style="background-color: #475569;">PRÓXIMAMENTE</span>
+                            <span class="status-badge soon">PRÓXIMAMENTE</span>
                             <h3>Nuevo Juego / Herramienta</h3>
-                            <p>Espacio reservado para el próximo script o utilidad de automatización en desarrollo.</p>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Espacio reservado para el próximo script o utilidad de automatización en desarrollo.</p>
                         </div>
-                        <span class="btn" style="background-color: #334155; cursor: not-allowed;">Próximamente</span>
+                        <a href="#" class="btn disabled">Próximamente</a>
                     </div>
                 </div>
-            </main>
-
-            <!-- ANUNCIO DERECHO (160x600) -->
-            <div class="sidebar-ad" id="ad-wrapper-right">
-                <script>
-                    atOptions = {
-                        'key' : 'c8ad3bfad4f49ccba0285f6af2ea3123',
-                        'format' : 'iframe',
-                        'height' : 600,
-                        'width' : 160,
-                        'params' : {}
-                    };
-                </script>
-                <script src="https://www.highperformanceformat.com/c8ad3bfad4f49ccba0285f6af2ea3123/invoke.js"></script>
             </div>
 
+            <!-- ANUNCIO INFERIOR -->
+            <div style="margin-top: 30px; text-align: center; width: 100%;">
+                <script>atOptions = {'key' : '72b4ce04b0f9642774f79d77fb8b9139', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {}};</script>
+                <script src="https://www.highperformanceformat.com/72b4ce04b0f9642774f79d77fb8b9139/invoke.js"></script>
+            </div>
         </div>
 
-        <!-- ANUNCIO INFERIOR -->
-        <div class="banner-ad" id="ad-wrapper-bottom">
-            <script>
-                atOptions = {
-                    'key' : '72b4ce04b0f9642774f79d77fb8b9139',
-                    'format' : 'iframe',
-                    'height' : 90,
-                    'width' : 728,
-                    'params' : {}
-                };
-            </script>
-            <script src="https://www.highperformanceformat.com/72b4ce04b0f9642774f79d77fb8b9139/invoke.js"></script>
+        <!-- LATERAL DERECHO (160x600) -->
+        <div class="side-ad">
+            <script>atOptions = {'key' : 'c8ad3bfad4f49ccba0285f6af2ea3123', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {}};</script>
+            <script src="https://www.highperformanceformat.com/c8ad3bfad4f49ccba0285f6af2ea3123/invoke.js"></script>
         </div>
-
     </div>
 
     <footer>
@@ -341,25 +158,16 @@
     <script>
         window.addEventListener('load', () => {
             setTimeout(() => {
-                const wall = document.getElementById('adblock-wall');
-                const topAd = document.querySelector('#ad-wrapper-top iframe');
-                const bottomAd = document.querySelector('#ad-wrapper-bottom iframe');
-                
-                if (!topAd && !bottomAd) {
-                    wall.style.display = 'flex';
-                    document.body.style.overflow = 'hidden';
-                }
-            }, 2500);
+                const testAd = document.createElement('div');
+                testAd.innerHTML = '&nbsp;';
+                testAd.className = 'adsbox';
+                document.body.appendChild(testAd);
+                window.setTimeout(() => {
+                    if (testAd.offsetHeight === 0) document.getElementById('adblock-wall').style.display = 'flex';
+                    testAd.remove();
+                }, 100);
+            }, 1500);
         });
-
-        function checkAdblockBeforeReload() {
-            const btn = document.getElementById('reload-btn');
-            btn.innerText = "Comprobando y recargando...";
-            btn.style.opacity = "0.7";
-            setTimeout(() => {
-                location.reload();
-            }, 500);
-        }
     </script>
 </body>
 </html>
